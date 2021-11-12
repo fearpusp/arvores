@@ -23,13 +23,13 @@ $admin = [
     ],
 ];
 
-$submenu2 = [
+$arvores = [
     [
-        'text' => 'SubItem 1',
+        'text' => 'Lista todas',
         'url' => 'subitem1',
     ],
     [
-        'text' => 'SubItem 2',
+        'text' => 'Cadastrar',
         'url' => 'subitem2',
         'can' => 'admin',
     ],
@@ -45,8 +45,8 @@ $menu = [
         'key' => 'menu_dinamico',
     ],
     [
-        'text' => 'Drop Down',
-        'submenu' => $submenu2,
+        'text' => 'Árvores',
+        'submenu' => $arvores,
         'can' => '',
     ],
     [
@@ -86,7 +86,7 @@ return [
     # valor pode ser substituido pela aplicação.
     'title' => config('app.name'),
 
-    # USP_THEME_SKIN deve ser colocado no .env da aplicação 
+    # USP_THEME_SKIN deve ser colocado no .env da aplicação
     'skin' => env('USP_THEME_SKIN', 'uspdev'),
 
     # chave da sessão. Troque em caso de colisão com outra variável de sessão.

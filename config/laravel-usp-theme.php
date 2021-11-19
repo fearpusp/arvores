@@ -1,36 +1,23 @@
 <?php
 
-$admin = [
-    [
-        'text' => '<i class="fas fa-atom"></i>  SubItem 1',
-        'url' => 'subitem1',
-    ],
-    [
-        'text' => 'SubItem 2',
-        'url' =>  '/subitem2',
-        'can' => 'admin',
-    ],
-    [
-        'type' => 'divider',
-    ],
-    [
-        'type' => 'header',
-        'text' => 'Cabeçalho',
-    ],
-    [
-        'text' => 'SubItem 3',
-        'url' => 'subitem3',
-    ],
-];
-
 $arvores = [
     [
         'text' => 'Lista todas',
-        'url' => 'subitem1',
+        'url' => 'arvores',
     ],
     [
         'text' => 'Cadastrar',
-        'url' => 'subitem2',
+        'url' => 'arvores/create',
+        'can' => 'admin',
+    ],
+    [
+        'text' => 'Listar espécies',
+        'url' => 'arvores/especies',
+        'can' => 'admin',
+    ],
+    [
+        'text' => 'Cadastrar espécie',
+        'url' => 'arvores/especies/create',
         'can' => 'admin',
     ],
 ];
@@ -47,22 +34,6 @@ $menu = [
     [
         'text' => 'Árvores',
         'submenu' => $arvores,
-        'can' => '',
-    ],
-    [
-        'text' => 'Está logado',
-        'url' => config('app.url') . '/logado', // com caminho absoluto
-        'can' => 'user',
-    ],
-    [
-        'text' => 'Menu gerente',
-        'url' => 'gerente',
-        'can' => 'gerente',
-    ],
-    [
-        'text' => 'Menu admin',
-        'submenu' => $admin,
-        'can' => 'admin',
     ],
 ];
 

@@ -25,6 +25,7 @@ Route::prefix('arvores')->group(function () {
     Route::get('/', [ArvoreController::class, 'index'])->name('arvores.index');
     Route::get('/create', [ArvoreController::class, 'create'])->name('arvores.create')->middleware('can:admin');
     Route::post('/', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');
+    Route::get('/show/{arvore}', [ArvoreController::class, 'show'])->name('arvores.show');
     Route::get('/especies/create', [EspecieController::class, 'create'])->name('especies.create')->middleware('can:admin');
     Route::get('/especies/', [EspecieController::class, 'index'])->name('especies.index')->middleware('can:admin');
     Route::post('/especies/', [EspecieController::class, 'store'])->name('especies.store')->middleware('can:admin');

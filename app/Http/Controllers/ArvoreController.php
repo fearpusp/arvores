@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Arvore;
 use App\Models\Especie;
 use App\Models\Foto;
+use App\Models\Ocorrencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,5 +69,11 @@ class ArvoreController extends Controller
         $foto->save();
 
         return redirect()->route('arvores.index')->with('success', 'Árvore cadastrada com sucesso!');
+    }
+
+    public function show(Arvore $arvore)
+    {
+        $ocorrencias = Ocorrencia::all()->where('arvore_id', $arvore->id);
+        return view('arvores.show', compact('arvore', 'ocorrencias'));
     }
 }

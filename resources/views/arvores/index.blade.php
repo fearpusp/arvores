@@ -1,17 +1,37 @@
 @extends ('layouts.app')
 @section ('content')
 <div class="container sm-8">
-    <h4 class="mb-4 text-center">Todas as espécies cadastradas</h4>
+    @if (session()->has('success'))
+    <div class="alert alert-success" id="div-sucesso">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{ session()->get('success') }}
+    </div>
+    @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <h4 class="mb-4 text-center">Todas as árvores cadastradas</h4>
     <hr>
     <table class="table table-bordered table-sm table-striped" id="logs">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Nome popular</th>
-                <th>Nome científico</th>
-                <th>Porte</th>
-                <th>Localização</th>
-                <th>Visualizar</th>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nome popular</th>
+                <th class="text-center">Nome científico</th>
+                <th class="text-center">Porte</th>
+                <th class="text-center">Localização</th>
+                <th class="text-center">Visualizar</th>
+                @can('admin')
+                <th>Ocorrências</th>
+                @endcan
             </tr>
         </thead>
         <tbody>
@@ -20,12 +40,15 @@
                     <td>{{$arvore->codigo_unico}}</td>
                     <td>{{$arvore->nome_popular}}</td>
                     <td>{{$arvore->nome_cientifico}}</td>
-                    <td>{{$arvore->porte}}</td>
-                    <td><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary"
+                    <td>{{ ucfirst($arvore->porte) }}</td>
+                    <td class="text-center"><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>
                                     {{$arvore->latitude}}, {{$arvore->longitude}}</a>
                     </td>
-                    <td><a href="{{ route('arvores.show', ['arvore' => $arvore]) }}" class="btn btn-info"><i class="fas fa-play"></i> Informações</a></td>
+                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore]) }}" class="btn btn-info"><i class="fas fa-play"></i> Página</a></td>
+                    @can('admin')
+                        <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
+                    @endcan
                 </tr>
             @endforeach
         </tbody>
@@ -43,6 +66,7 @@
         lengthMenu: [ [50, 100, 250, -1], [50, 100, 250, "Todos"] ],
         pageLength: 50,
         orderCellsTop: true,
+        order: [1, 'asc'],
         fixedHeader: true,
         initComplete: function () {
             const api = this.api();

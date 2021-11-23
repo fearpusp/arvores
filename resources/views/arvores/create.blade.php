@@ -67,13 +67,14 @@
             </div>
             <br>
             <div class="form-row">
-                <div class="col">
+                <div class="col text-center">
                     <label for="foto" class="control-label">Foto/imagem
                     <input type="file" name="foto" accept="image/png, image/jpeg, image/jpg">
                 </div>
             </div>
+            <hr>
             <div class="row">
-                <div class="col">
+                <div class="col text-center">
                     <button type="submit" class="btn btn-primary">Salvar</button>
                     <a href="{{ route('arvores.index') }}" class="btn btn-default">Cancelar</a>
                 </div>

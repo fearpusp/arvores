@@ -48,6 +48,6 @@ class EspecieController extends Controller
         $especie->nome_cientifico = $request->nome_cientifico;
         $especie->nome_popular = $request->nome_popular;
         $especie->save();
-        return redirect()->route('especies.index')->with('success', 'Espécie cadastrada com sucesso!');
+        return redirect()->route('especies.index')->with(['success' => 'Espécie cadastrada com sucesso!']);
     }
 }

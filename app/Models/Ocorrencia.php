@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ocorrencia extends Model
 {
     use HasFactory;
+
+    public function arquivos()
+    {
+        return $this->hasMany(Arquivo::class);
+    }
 }

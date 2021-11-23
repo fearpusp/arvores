@@ -17,7 +17,7 @@
                             <h6 class="card-subtitle mb-2 text-muted">{{ $arvore->nome_cientifico  }}</h6>
                             <p class="card-text">
                                 Código: {{ $arvore->codigo_unico }}<br>
-                                Porte: {{ $arvore->porte }}<br>
+                                Porte: {{ ucfirst($arvore->porte) }}<br>
                             </p>
                             <p class="card-text">
                                 <a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary" target="_blank"><i class="fa fa-map-marker-alt"></i>  Localização (Maps)</a>
@@ -33,11 +33,21 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    <h5>Histório de Ocorrências</h5>
+                    <h5>Histório de Ocorrências
+                        @can('admin')
+                            <span class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Nova</a></span>
+                        @endcan
+                    </h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     @foreach ($ocorrencias as $ocorrencia)
-                        <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y H:i:s') }}: {{ $ocorrencia->tipo_ocorrencia }}</li>
+                        <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y H:i:s') }}: {{ $ocorrencia->tipo_ocorrencia }}
+                        @can('admin')
+                            @if (count($ocorrencia->arquivos) > 0)
+                            - <a href="/arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a>
+                            @endif
+                        @endcan
+                        </li>
                     @endforeach
                 </ul>
             </div>

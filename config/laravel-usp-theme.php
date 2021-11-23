@@ -24,16 +24,12 @@ $arvores = [
 
 $menu = [
     [
-        'text' => '<i class="fas fa-home"></i> Home',
-        'url' => 'home',
+        'text' => '<i class="fas fa-home"></i>  Árvores',
+        'submenu' => $arvores,
     ],
     [
         # este item de menu será substituido no momento da renderização
         'key' => 'menu_dinamico',
-    ],
-    [
-        'text' => 'Árvores',
-        'submenu' => $arvores,
     ],
 ];
 

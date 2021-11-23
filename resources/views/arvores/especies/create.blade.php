@@ -39,9 +39,9 @@
                     <input name="nome_popular" class="form-control" required>
                 </div>
             </div>
-            <br>
+            <hr>
             <div class="row">
-                <div class="col">
+                <div class="col text-center">
                     <button type="submit" class="btn btn-primary">Salvar</button>
                     <a href="{{ route('especies.index') }}" class="btn btn-default">Cancelar</a>
                 </div>

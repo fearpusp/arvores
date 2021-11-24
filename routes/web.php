@@ -25,6 +25,9 @@ Route::prefix('arvores')->group(function () {
     Route::get('/create', [ArvoreController::class, 'create'])->name('arvores.create')->middleware('can:admin');
     Route::post('/', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');
     Route::get('/show/{arvore}', [ArvoreController::class, 'show'])->name('arvores.show');
+    Route::get('/edit/{arvore}', [ArvoreController::class, 'edit'])->name('arvores.edit');
+    Route::patch('/{arvore}', [ArvoreController::class, 'update'])->name('arvores.update')->middleware('can:admin');
+    Route::delete('/{arvore}', [ArvoreController::class, 'destroy'])->name('arvores.destroy')->middleware('can:admin');
     Route::get('/especies/create', [EspecieController::class, 'create'])->name('especies.create')->middleware('can:admin');
     Route::get('/especies/', [EspecieController::class, 'index'])->name('especies.index')->middleware('can:admin');
     Route::get('/ocorrencias/create/{arvore}', [OcorrenciaController::class, 'create'])->name('ocorrencias.create')->middleware('can:admin');

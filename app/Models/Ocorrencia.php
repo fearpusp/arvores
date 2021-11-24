@@ -13,4 +13,9 @@ class Ocorrencia extends Model
     {
         return $this->hasMany(Arquivo::class);
     }
+
+    public function arvore()
+    {
+        return $this->belongsTo(Arvore::class);
+    }
 }

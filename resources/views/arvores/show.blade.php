@@ -9,7 +9,9 @@
             <div class="card">
                 <div class="row no-gutters">
                     <div class="col-sm">
-                        <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;">
+                        @if (count($arvore->fotos) > 0)
+                            <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;">
+                        @endif
                     </div>
                     <div class="col-sm">
                         <div class="card-body">

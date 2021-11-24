@@ -1,6 +1,5 @@
 @extends ('layouts.app')
 @section ('content')
-<div class="container sm-8">
     @if (session()->has('success'))
     <div class="alert alert-success" id="div-sucesso">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -20,7 +19,7 @@
 
     <h4 class="mb-4 text-center">Todas as árvores cadastradas</h4>
     <hr>
-    <table class="table table-bordered table-sm table-striped" id="logs">
+    <table class="table table-bordered table-sm table-striped" id="logs" style="width: 100%;">
         <thead>
             <tr>
                 <th class="text-center">Código</th>
@@ -31,6 +30,8 @@
                 <th class="text-center">Visualizar</th>
                 @can('admin')
                 <th>Ocorrências</th>
+                <th>Editar</th>
+                <th>Excluir</th>
                 @endcan
             </tr>
         </thead>
@@ -41,19 +42,26 @@
                     <td>{{$arvore->nome_popular}}</td>
                     <td><i>{{$arvore->nome_cientifico}}</i></td>
                     <td>{{ ucfirst($arvore->porte) }}</td>
-                    <td class="text-center"><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary"
+                    <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn-sm btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>
-                                    {{$arvore->latitude}}, {{$arvore->longitude}}</a>
+                                    {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
                     </td>
-                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore]) }}" class="btn btn-info"><i class="fas fa-play"></i> Página</a></td>
+                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore]) }}" class="btn-sm btn-info"><i class="fas fa-play"></i> Página</a></td>
                     @can('admin')
-                        <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
+                        <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
+                        <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
+                        <td class="text-center">
+                            <form action="arvores/{{ $arvore->id }} " method="post">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn-sm btn-danger" onclick="return confirm('Tem certeza?');"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
                     @endcan
                 </tr>
             @endforeach
         </tbody>
     </table>
-</div>
 @endsection
 @section('javascripts_bottom')
 <script>

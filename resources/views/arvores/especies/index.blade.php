@@ -31,7 +31,7 @@
             @foreach ($especies as $especie)
                 <tr>
                     <td>{{$especie->nome_popular}}</td>
-                    <td>{{$especie->nome_cientifico}}</td>
+                    <td><i>{{$especie->nome_cientifico}}</i></td>
                 </tr>
             @endforeach
         </tbody>

@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{$arvore->codigo_unico}}</td>
                     <td>{{$arvore->nome_popular}}</td>
-                    <td>{{$arvore->nome_cientifico}}</td>
+                    <td><i>{{$arvore->nome_cientifico}}</i></td>
                     <td>{{ ucfirst($arvore->porte) }}</td>
                     <td class="text-center"><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>

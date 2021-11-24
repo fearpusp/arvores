@@ -14,7 +14,7 @@
                     <div class="col-sm">
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{ $arvore->nome_popular }}</strong></h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ $arvore->nome_cientifico  }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><i>{{ $arvore->nome_cientifico  }}</i></h6>
                             <p class="card-text">
                                 Código: {{ $arvore->codigo_unico }}<br>
                                 Porte: {{ ucfirst($arvore->porte) }}<br>

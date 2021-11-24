@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="row no-gutters">
                     <div class="col-sm">
-                        <img src="/foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;">
+                        <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;">
                     </div>
                     <div class="col-sm">
                         <div class="card-body">
@@ -44,7 +44,7 @@
                         <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y H:i:s') }}: {{ $ocorrencia->tipo_ocorrencia }}
                         @can('admin')
                             @if (count($ocorrencia->arquivos) > 0)
-                            - <a href="/arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a>
+                            - <a href="arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a>
                             @endif
                         @endcan
                         </li>

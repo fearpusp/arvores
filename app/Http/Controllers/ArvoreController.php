@@ -54,11 +54,9 @@ class ArvoreController extends Controller
                 ->route('arvores.create')->withErrors($validator)->withInput();
         }
 
-        $especie = Especie::select('nome_cientifico', 'nome_popular')->find($request->especie);
         $arvore = new Arvore();
         $arvore->codigo_unico = $request->codigo_unico;
-        $arvore->nome_cientifico = $especie->nome_cientifico;
-        $arvore->nome_popular = $especie->nome_popular;
+        $arvore->especie_id = $request->especie;
         $arvore->porte = $request->porte;
         $arvore->latitude = $request->latitude;
         $arvore->longitude = $request->longitude;
@@ -105,10 +103,7 @@ class ArvoreController extends Controller
                 ->route('arvores.edit', ['arvore' => $arvore])->withErrors($validator)->withInput();
         }
 
-
-        $especie = Especie::select('nome_cientifico', 'nome_popular')->find($request->especie);
-        $arvore->nome_cientifico = $especie->nome_cientifico;
-        $arvore->nome_popular = $especie->nome_popular;
+        $arvore->especie_id = $request->especie;
         $arvore->porte = $request->porte;
         $arvore->latitude = $request->latitude;
         $arvore->longitude = $request->longitude;

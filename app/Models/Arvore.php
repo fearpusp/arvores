@@ -26,4 +26,9 @@ class Arvore extends Model
     {
         return $this->hasMany(Ocorrencia::class);
     }
+
+    public function especie()
+    {
+        return $this->belongsTo(Especie::class);
+    }
 }

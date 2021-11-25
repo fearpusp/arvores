@@ -39,8 +39,8 @@
             @foreach ($arvores as $arvore)
                 <tr>
                     <td>{{$arvore->codigo_unico}}</td>
-                    <td>{{$arvore->nome_popular}}</td>
-                    <td><i>{{$arvore->nome_cientifico}}</i></td>
+                    <td>{{$arvore->especie->nome_popular}}</td>
+                    <td><i>{{$arvore->especie->nome_cientifico}}</i></td>
                     <td>{{ ucfirst($arvore->porte) }}</td>
                     <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn-sm btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>
@@ -66,7 +66,9 @@
 @section('javascripts_bottom')
 <script>
     function enviar() {
+        console.log('');
         if (confirm('Confirma exclusão?')) {
+            console.log('');
             document.getElementById('form_delete').submit();
         }
     }

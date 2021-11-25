@@ -28,18 +28,21 @@ class OcorrenciaController extends Controller
     {
         $messages = [
             'required' => 'O campo :attribute deve estar preenchido.',
+            'before_or_equal' => 'A data não pode ser futura',
+            'date_format' => 'A data deve ser no formato dd/mm/yyyy',
         ];
 
         // Componente responsável pela validação
+        //'data_hora' => 'required|date|max:' . date('d/m/Y'),
         $validator = Validator::make($request->all(), [
-            'data_hora' => 'required',
+            'data_hora' => 'required|date_format:d/m/Y|before_or_equal:today',
             'tipo_ocorrencia' => 'required',
         ], $messages);
 
         // Validação
         if ($validator->fails()) {
             return redirect()
-                ->route('ocorrencias.create')->withErrors($validator)->withInput();
+                ->route('ocorrencias.create', ['arvore' => $request->arvore_id])->withErrors($validator)->withInput();
         }
 
         $data_hora = Carbon::createFromFormat('d/m/Y', $request->data_hora);

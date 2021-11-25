@@ -19,7 +19,7 @@
 
     <h4 class="mb-4 text-center">Todas as árvores cadastradas</h4>
     <hr>
-    <table class="table table-bordered table-sm table-striped" id="logs" style="width: 100%;">
+    <table class="table table-bordered table-sm table-striped" id="todas_arvores" style="width: 100%;">
         <thead>
             <tr>
                 <th class="text-center">Código</th>
@@ -29,9 +29,9 @@
                 <th class="text-center">Localização</th>
                 <th class="text-center">Visualizar</th>
                 @can('admin')
-                <th>Ocorrências</th>
-                <th>Editar</th>
-                <th>Excluir</th>
+                    <th class="text-center">Ocorrências</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Excluir</th>
                 @endcan
             </tr>
         </thead>
@@ -51,10 +51,10 @@
                         <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
                         <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td class="text-center">
-                            <form action="arvores/{{ $arvore->id }} " method="post">
-                              @csrf
-                              @method('delete')
-                              <button type="submit" class="btn-sm btn-danger" onclick="return confirm('Tem certeza?');"><i class="fas fa-trash-alt"></i></button>
+                            <form action="arvores/{{ $arvore->id }} " method="post" id="form_delete">
+                               @csrf
+                               @method('delete')
+                               <a href="#" onclick="enviar()" class="btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                             </form>
                         </td>
                     @endcan
@@ -65,55 +65,20 @@
 @endsection
 @section('javascripts_bottom')
 <script>
+    function enviar() {
+        if (confirm('Confirma exclusão?')) {
+            document.getElementById('form_delete').submit();
+        }
+    }
+
     // https://datatables.net/extensions/fixedheader/examples/options/columnFiltering.html
-    $(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#logs thead tr')
-        .clone(true)
-        const table = $('#logs').DataTable({
-        lengthMenu: [ [50, 100, 250, -1], [50, 100, 250, "Todos"] ],
-        pageLength: 50,
-        orderCellsTop: true,
-        order: [1, 'asc'],
-        fixedHeader: true,
-        initComplete: function () {
-            const api = this.api();
-            // For each column
-            api
-                .columns()
-                .eq(0)
-                .each(function (colIdx) {
-                    // On every keypress in this input
-                    $('input', $('.filters th').eq($(api.column(colIdx).header()).index()))
-                        .off('keyup change')
-                        .on('keyup change', function (e) {
-                            e.stopPropagation();
-
-                            // Get the search value
-                            $(this).attr('title', $(this).val());
-                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
-
-                            var cursorPosition = this.selectionStart;
-                            // Search the column for that value
-                            api
-                                .column(colIdx)
-                                .search(
-                                    this.value != ''
-                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                        : '',
-                                    this.value != '',
-                                    this.value == ''
-                                )
-                                .draw();
-
-                            $(this)
-                                .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
-                        });
-                });
-        },
-    });
-
-    });
+    $(document).ready(function() {
+        const table_arvores = $('#todas_arvores').DataTable({
+            lengthMenu: [ [50, 100, 250, -1], [50, 100, 250, "Todas"] ],
+            pageLength: 50,
+            orderCellsTop: true,
+            order: [1, 'asc'],
+            });
+        });
 </script>
 @endsection

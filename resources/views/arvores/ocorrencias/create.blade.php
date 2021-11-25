@@ -31,9 +31,9 @@
             {{ csrf_field() }}
             <input type="hidden" name="arvore_id" value="{{ $arvore->id }}">
             <div class="row">
-                <div class="col-3">
-                    <label for="data_hora" class="control-label">Data/hora</label>
-                    <input name="data_hora" class="form-control" value="{{ Carbon\Carbon::parse(now())->format('d/m/Y H:i:s') }}"/>
+                <div class="col-2">
+                    <label for="data_hora" class="control-label">Data</label>
+                    <input name="data_hora" id="data_hora" class="form-control text-center" value="{{ Carbon\Carbon::parse(now())->format('d/m/Y') }}"/>
                 </div>
                 <div class="col-6">
                     <label for="tipo_ocorrencia" class="control-label">Tipo</label>
@@ -44,7 +44,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
+                    <br>
                     <label for="arquivo" class="control-label">Arquivo
                     <input type="file" name="arquivo" accept="image/png, image/jpeg, image/jpg, application/pdf, application/zip">
                 </div>
@@ -58,4 +59,14 @@
             </div>
         </form>
     </div>
+@endsection
+@section('javascripts_bottom')
+<script>
+    $("#data_hora").datepicker({
+        autoclose: true,
+        todayHighliht: true,
+        dateFormat: 'dd/mm/yy',
+        maxDate: '0',
+    });
+</script>
 @endsection

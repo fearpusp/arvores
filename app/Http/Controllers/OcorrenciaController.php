@@ -42,10 +42,10 @@ class OcorrenciaController extends Controller
                 ->route('ocorrencias.create')->withErrors($validator)->withInput();
         }
 
-        $data_hora = Carbon::createFromFormat('d/m/Y H:i:s', $request->data_hora);
+        $data_hora = Carbon::createFromFormat('d/m/Y', $request->data_hora);
         $tipo_ocorrencia = TipoOcorrencia::select('descricao')->find($request->tipo_ocorrencia);
         $ocorrencia = new Ocorrencia();
-        $ocorrencia->data_hora = $data_hora->format('Y-m-d H:i:s');
+        $ocorrencia->data_hora = $data_hora->format('Y-m-d');
         $ocorrencia->tipo_ocorrencia = $tipo_ocorrencia->descricao;
         $ocorrencia->arvore_id = $request->arvore_id;
         $ocorrencia->save();

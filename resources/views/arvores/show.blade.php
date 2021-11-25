@@ -43,7 +43,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     @foreach ($ocorrencias as $ocorrencia)
-                        <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y H:i:s') }}: {{ $ocorrencia->tipo_ocorrencia }}
+                        <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y') }}: {{ $ocorrencia->tipo_ocorrencia }}
                         @can('admin')
                             @if (count($ocorrencia->arquivos) > 0)
                             - <a href="arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a>

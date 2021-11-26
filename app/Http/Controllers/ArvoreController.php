@@ -73,7 +73,7 @@ class ArvoreController extends Controller
 
     public function show(Arvore $arvore)
     {
-        $ocorrencias = Ocorrencia::all()->where('arvore_id', $arvore->id);
+        $ocorrencias = Ocorrencia::where('arvore_id', $arvore->id)->orderBy('data_hora', 'asc')->orderBy('id', 'asc')->get();
         return view('arvores.show', compact('arvore', 'ocorrencias'));
     }
 

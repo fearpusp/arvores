@@ -1,9 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <h4 class="text-center">{{ $arvore->nome_popular }}</h4>
+    @if (session()->has('success'))
+    <div class="alert alert-success" id="div-sucesso">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{ session()->get('success') }}
+    </div>
+    @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <h4 class="text-center">{{ $arvore->especie->nome_popular }}</h4>
     <hr>
-    <!--div class="container-fluid"-->
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
@@ -27,9 +43,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer text-center">
-                    <a href="{{ route('arvores.index') }}" class="btn btn-info">Todas as árvores</a>
-                </div>
             </div>
         </div>
         <div class="col-sm-6">
@@ -43,16 +56,21 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     @foreach ($ocorrencias as $ocorrencia)
-                        <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y') }}: {{ $ocorrencia->tipo_ocorrencia }}
+                        <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y') }}: {{ $ocorrencia->tipo_ocorrencia->descricao }}
                         @can('admin')
                             @if (count($ocorrencia->arquivos) > 0)
-                            - <a href="arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a>
+                                <small>- <a href="arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a></small>
                             @endif
+                            <a href="{{ route('ocorrencias.edit', ['ocorrencia' => $ocorrencia->id]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
                         @endcan
                         </li>
                     @endforeach
                 </ul>
             </div>
+        </div>
+        <div class="container text-center">
+        <br>
+            <a href="{{ route('arvores.index') }}" class="btn btn-info">Todas as árvores</a>
         </div>
     </div>
 @endsection

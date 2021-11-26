@@ -18,4 +18,9 @@ class Ocorrencia extends Model
     {
         return $this->belongsTo(Arvore::class);
     }
+
+    public function tipo_ocorrencia()
+    {
+        return $this->belongsTo(TipoOcorrencia::class);
+    }
 }

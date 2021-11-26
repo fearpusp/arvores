@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TipoOcorrencia extends Model
 {
     use HasFactory;
+
+    public function ocorrencia()
+    {
+        return $this->belongsTo(Ocorrencia::class);
+    }
 }

@@ -34,6 +34,8 @@ Route::prefix('arvores')->group(function () {
     Route::patch('/especies/{especie}', [EspecieController::class, 'update'])->name('especies.update')->middleware('can:admin');
     Route::get('/ocorrencias/create/{arvore}', [OcorrenciaController::class, 'create'])->name('ocorrencias.create')->middleware('can:admin');
     Route::post('/ocorrencias/', [OcorrenciaController::class, 'store'])->name('ocorrencias.store')->middleware('can:admin');
+    Route::get('/ocorrencias/{ocorrencia}', [OcorrenciaController::class, 'edit'])->name('ocorrencias.edit')->middleware('can:admin');
+    Route::patch('/ocorrencias/{ocorrencia}', [OcorrenciaController::class, 'update'])->name('ocorrencias.update')->middleware('can:admin');
     Route::post('/especies/', [EspecieController::class, 'store'])->name('especies.store')->middleware('can:admin');
     Route::resource('/arquivos', ArquivoController::class);
 });

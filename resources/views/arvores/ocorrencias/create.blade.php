@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container sm-4">
-        <h4 class="mb-4 text-center">Ocorrência para {{ $arvore->nome_popular }} ({{$arvore->codigo_unico}})</h4>
+        <h4 class="mb-4 text-center">Ocorrência para {{ $arvore->especie->nome_popular }} ({{$arvore->codigo_unico}})</h4>
         <hr>
     </div>
 

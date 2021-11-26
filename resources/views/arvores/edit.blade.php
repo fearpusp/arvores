@@ -41,7 +41,7 @@
                     <label for="especie" class="control-label">Especie</label>
                     <select class="form-control" name="especie" autofocus>
                         @foreach ($especies as $especie)
-                            @if (($especie['nome_popular'] == $arvore->nome_popular) && ($especie['nome_cientifico'] == $arvore->nome_cientifico))
+                            @if ($especie['id'] == $arvore->especie_id))
                                 <option value="{{ $especie['id'] }}" selected>{{ $especie['nome_popular']}} ({{ $especie['nome_cientifico'] }})</option>
                             @else
                                 <option value="{{ $especie['id'] }}">{{ $especie['nome_popular']}} ({{ $especie['nome_cientifico'] }})</option>

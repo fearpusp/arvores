@@ -31,23 +31,21 @@
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-3">
-                    <label for="codigo_unico" class="control-label">Código único</label>
-                    <input name="codigo_unico" class="form-control" autofocus/>
+                    <label for="codigo_unico" class="control-label">Código único <small>(XXXX) apenas números</small></label>
+                    <input name="codigo_unico" class="form-control text-center" id="codigo_unico" type="text" pattern="^[0-9]{4}$" maxlength="4" autofocus/>
                 </div>
-            <!--/div>
-            <div class="form-row"!-->
                 <div class="col-6">
                     <label for="especie" class="control-label">Especie</label>
-                    <select class="form-control" name="especie">
+                    <select class="form-control" name="especie" required>
                         <option></option>
                         @foreach ($especies as $especie)
-                        <option value="{{ $especie['id'] }}">{{ $especie['nome_popular']}} ({{ $especie['nome_cientifico'] }})</option>
+                            <option value="{{ $especie['id'] }}">{{ $especie['nome_popular']}} ({{ $especie['nome_cientifico'] }})</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-3">
                     <label for="porte" class="control-label">Porte</label>
-                    <select class="form-control" name="porte">
+                    <select class="form-control" name="porte" required>
                         <option value="pequeno">Pequeno</option>
                         <option value="medio">Médio</option>
                         <option value="grande">Grande</option>
@@ -58,11 +56,11 @@
             <div class="row">
                 <div class="col">
                     <label for="latitude" class="control-label">Latitude</label>
-                    <input name="latitude" class="form-control"/>
+                    <input name="latitude" class="form-control" required/>
                 </div>
                 <div class="col">
                     <label for="longitude" class="control-label">Longitude</label>
-                    <input name="longitude" class="form-control"/>
+                    <input name="longitude" class="form-control" required/>
                 </div>
             </div>
             <br>

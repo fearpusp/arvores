@@ -109,18 +109,21 @@ class ArvoreController extends Controller
         $arvore->longitude = $request->longitude;
         $arvore->save();
 
+        // Caso já tenha foto cadastrada e seja enviada nova, apaga a anterior
         if (($request->foto_anterior_id) && ($request->file('foto'))) {
             $foto_anterior = Foto::find($request->foto_anterior_id);
             Storage::delete($foto_anterior->path);
             $foto_anterior->delete();
+        }
 
+        // upload da nova foto
+        if ($request->file('foto')) {
             $foto = new Foto();
             $foto->arvore_id = $arvore->id;
             $foto->original_name = $request->file('foto')->getClientOriginalName();
             $foto->path = $request->file('foto')->store('./fotos');
             $foto->save();
         }
-
 
         return redirect()->route('arvores.index')->with(['success' => 'Árvore atualizada com sucesso!']);
     }

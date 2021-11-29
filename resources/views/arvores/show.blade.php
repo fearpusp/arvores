@@ -18,7 +18,11 @@
     </div>
     @endif
 
-    <h4 class="text-center">{{ $arvore->especie->nome_popular }}</h4>
+    <h4 class="text-center">{{ $arvore->especie->nome_popular }}
+        @can('admin')
+            <small>&nbsp;<a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i> Editar árvore</a></small>
+        @endcan
+    </h4>
     <hr>
     <div class="row">
         <div class="col-sm-6">

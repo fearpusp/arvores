@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container sm-4">
-        <h4 class="mb-4 text-center">Editar árvore ({{ $arvore->nome_popular }})</h4>
+        <h4 class="mb-4 text-center">Editar árvore ({{ $arvore->especie->nome_popular }})</h4>
         <hr>
     </div>
 
@@ -102,7 +102,7 @@
             <div class="row">
                 <div class="col text-center">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="{{ route('arvores.index') }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ redirect()->back()->getTargetUrl() }}" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
 

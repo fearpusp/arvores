@@ -125,7 +125,7 @@ class ArvoreController extends Controller
             $foto->save();
         }
 
-        return redirect()->route('arvores.index')->with(['success' => 'Árvore atualizada com sucesso!']);
+        return redirect()->route('arvores.show', ['arvore' => $arvore->id])->with(['success' => 'Árvore atualizada com sucesso!']);
     }
 
     public function destroy(Arvore $arvore)

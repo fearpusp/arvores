@@ -3,21 +3,21 @@
 $arvores = [
     [
         'text' => 'Listar todas',
-        'url' => 'arvores',
+        'url' => '/',
     ],
     [
         'text' => 'Cadastrar',
-        'url' => 'arvores/create',
+        'url' => 'create',
         'can' => 'admin',
     ],
     [
         'text' => 'Listar espécies',
-        'url' => 'arvores/especies',
+        'url' => 'especies',
         'can' => 'admin',
     ],
     [
         'text' => 'Cadastrar espécie',
-        'url' => 'arvores/especies/create',
+        'url' => 'especies/create',
         'can' => 'admin',
     ],
 ];

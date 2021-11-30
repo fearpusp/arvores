@@ -51,10 +51,10 @@
                         <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
                         <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td class="text-center">
-                            <form action="{{ $arvore->id }} " method="post" id="form_delete">
-                               @csrf
-                               @method('delete')
-                               <a href="#" onclick="enviar()" class="btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <form action="{{ route('arvores.destroy', ['arvore' => $arvore->id] }} " method="post" id="form_delete">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" onclick="return confirm('Tem certeza?');" class="btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>
                     @endcan
@@ -65,14 +65,6 @@
 @endsection
 @section('javascripts_bottom')
 <script>
-    function enviar() {
-        console.log('');
-        if (confirm('Confirma exclusão?')) {
-            console.log('');
-            document.getElementById('form_delete').submit();
-        }
-    }
-
     // https://datatables.net/extensions/fixedheader/examples/options/columnFiltering.html
     $(document).ready(function() {
         const table_arvores = $('#todas_arvores').DataTable({

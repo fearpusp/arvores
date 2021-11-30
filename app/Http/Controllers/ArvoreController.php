@@ -8,6 +8,7 @@ use App\Models\Especie;
 use App\Models\Foto;
 use App\Models\Ocorrencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,8 @@ class ArvoreController extends Controller
     {
         $arvores = Arvore::select('id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
-            ->orderBy(Especie::select('nome_popular')->whereColumn('especies.id', 'arvores.especie_id'))
+            ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
             ->get();
 
         return view('arvores.index', compact('arvores'));

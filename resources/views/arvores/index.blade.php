@@ -79,7 +79,7 @@
             lengthMenu: [ [50, 100, 250, -1], [50, 100, 250, "Todas"] ],
             pageLength: 50,
             paging: true,
-            ordering: true,
+            ordering: false,
             order: [1, 'asc'],
         });
     });

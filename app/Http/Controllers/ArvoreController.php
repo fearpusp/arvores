@@ -16,7 +16,7 @@ class ArvoreController extends Controller
 {
     public function index()
     {
-        $arvores = Arvore::select('id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+        $arvores = Arvore::select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
             ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')

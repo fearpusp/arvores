@@ -51,7 +51,7 @@
                         <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
                         <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td class="text-center">
-                            <form action="/{{ $arvore->id }} " method="post" id="form_delete">
+                            <form action="{{ $arvore->id }} " method="post" id="form_delete">
                                @csrf
                                @method('delete')
                                <a href="#" onclick="enviar()" class="btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>

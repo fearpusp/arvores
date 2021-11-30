@@ -2,7 +2,7 @@
 
 $arvores = [
     [
-        'text' => 'Lista todas',
+        'text' => 'Listar todas',
         'url' => 'arvores',
     ],
     [
@@ -24,8 +24,9 @@ $arvores = [
 
 $menu = [
     [
-        'text' => '<i class="fas fa-home"></i>  Árvores',
+        'text' => '<i class="fas fa-home"></i>  Administrar',
         'submenu' => $arvores,
+        'can' => 'admin',
     ],
     [
         # este item de menu será substituido no momento da renderização
@@ -37,13 +38,6 @@ $right_menu = [
     [
         // menu utilizado para views da biblioteca senhaunica-socialite.
         'key' => 'senhaunica-socialite',
-    ],
-    [
-        'text' => '<i class="fas fa-cog"></i>',
-        'title' => 'Configurações',
-        'target' => '_blank',
-        'url' => config('app.url') . '/item1',
-        'align' => 'right',
     ],
 ];
 

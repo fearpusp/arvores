@@ -15,7 +15,10 @@ class ArvoreController extends Controller
 {
     public function index()
     {
-        $arvores = Arvore::all();
+        $arvores = Arvore::select('id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+            ->with('especie')
+            ->orderBy(Especie::select('nome_popular')->whereColumn('especies.id', 'arvores.especie_id'))
+            ->get();
 
         return view('arvores.index', compact('arvores'));
     }

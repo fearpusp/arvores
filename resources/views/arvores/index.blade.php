@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <h4 class="mb-4 text-center">Todas as árvores cadastradas</h4>
+    <h4 class="mb-4 text-center">Catálogo de árvores da FEA-RP</h4>
     <hr>
     <table class="table table-bordered table-sm table-striped" id="todas_arvores" style="width: 100%;">
         <thead>
@@ -78,9 +78,10 @@
         const table_arvores = $('#todas_arvores').DataTable({
             lengthMenu: [ [50, 100, 250, -1], [50, 100, 250, "Todas"] ],
             pageLength: 50,
-            orderCellsTop: true,
+            paging: true,
+            ordering: true,
             order: [1, 'asc'],
-            });
         });
+    });
 </script>
 @endsection

@@ -3,7 +3,7 @@
 $arvores = [
     [
         'text' => 'Listar todas',
-        'url' => '/',
+        'url' => '',
     ],
     [
         'text' => 'Cadastrar',

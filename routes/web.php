@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArvoreController::class, 'index'])->name('arvores.index');
 Route::get('/create', [ArvoreController::class, 'create'])->name('arvores.create')->middleware('can:admin');
-Route::post('/', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');
+Route::post('/arvores', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');
 Route::get('/show/{arvore}', [ArvoreController::class, 'show'])->name('arvores.show');
 Route::get('/edit/{arvore}', [ArvoreController::class, 'edit'])->name('arvores.edit');
 Route::patch('/{arvore}', [ArvoreController::class, 'update'])->name('arvores.update')->middleware('can:admin');

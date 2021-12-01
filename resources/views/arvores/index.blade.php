@@ -42,19 +42,19 @@
                     <td>{{$arvore->especie->nome_popular}}</td>
                     <td><i>{{$arvore->especie->nome_cientifico}}</i></td>
                     <td>{{ ucfirst($arvore->porte) }}</td>
-                    <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn-sm btn-primary"
+                    <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>
                                     {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
                     </td>
-                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore]) }}" class="btn-sm btn-info"><i class="fas fa-play"></i> Página</a></td>
+                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore]) }}" class="btn btn-sm btn-info"><i class="fas fa-play"></i> Página</a></td>
                     @can('admin')
-                        <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
-                        <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
+                        <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
+                        <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td class="text-center">
                             <form action="{{ route('arvores.destroy', ['arvore' => $arvore->id]) }} " method="post" id="form_delete">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" onclick="return confirm('Tem certeza?');" class="btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <button type="submit" onclick="return confirm('Tem certeza?');" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>
                     @endcan

@@ -76,8 +76,9 @@ class ArvoreController extends Controller
         return redirect()->route('arvores.index')->with(['success' => 'Árvore cadastrada com sucesso!']);
     }
 
-    public function show(Arvore $arvore)
+    public function show(string $codigo)
     {
+        $arvore = Arvore::where('codigo_unico', $codigo)->get()->first();
         $ocorrencias = Ocorrencia::where('arvore_id', $arvore->id)->orderBy('data_hora', 'asc')->orderBy('id', 'asc')->get();
         return view('arvores.show', compact('arvore', 'ocorrencias'));
     }
@@ -100,6 +101,7 @@ class ArvoreController extends Controller
             'porte' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
+            'foto' => 'file|image|mimes:jpeg,png,jpg|max:6048',
         ], $messages);
 
         // Validação
@@ -130,7 +132,7 @@ class ArvoreController extends Controller
             $foto->save();
         }
 
-        return redirect()->route('arvores.show', ['arvore' => $arvore->id])->with(['success' => 'Árvore atualizada com sucesso!']);
+        return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Árvore atualizada com sucesso!']);
     }
 
     public function destroy(Arvore $arvore)

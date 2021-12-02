@@ -44,6 +44,12 @@
                             <p class="card-text">
                                 <a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary" target="_blank"><i class="fa fa-map-marker-alt"></i>  Localização (Maps)</a>
                             </p>
+                            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->gradient(59, 76, 66, 100, 200, 255, 'inverse_diagonal')->size(200)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} ">
+                        </div>
+                        <div class="text-center">
+                            <a href="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(308.406)->color(59, 76, 66)->backgroundColor(144, 172, 142)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} " download="{{$arvore->codigo_unico}}_{{$arvore->especie->nome_cientifico}}.png">
+                                Download PNG
+                            </a>
                         </div>
                     </div>
                 </div>

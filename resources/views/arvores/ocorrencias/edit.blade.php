@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col text-center">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="{{ route('arvores.show', ['arvore' => $ocorrencia->arvore_id]) }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ route('arvores.show', ['arvore' => $ocorrencia->arvore->codigo_unico]) }}" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
         </form>

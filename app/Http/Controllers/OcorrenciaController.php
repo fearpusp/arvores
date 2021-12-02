@@ -47,12 +47,13 @@ class OcorrenciaController extends Controller
         }
 
         $data_hora = Carbon::createFromFormat('d/m/Y', $request->data_hora);
-        $tipo_ocorrencia = TipoOcorrencia::select('descricao')->find($request->tipo_ocorrencia);
         $ocorrencia = new Ocorrencia();
         $ocorrencia->data_hora = $data_hora->format('Y-m-d');
         $ocorrencia->tipo_ocorrencia_id = $request->tipo_ocorrencia;
         $ocorrencia->arvore_id = $request->arvore_id;
         $ocorrencia->save();
+
+        $arvore = Arvore::find($request->arvore_id);
 
         if (count($request->file())) {
             $arquivo = new Arquivo();
@@ -62,7 +63,7 @@ class OcorrenciaController extends Controller
             $arquivo->save();
         }
 
-        return redirect()->route('arvores.show', ['arvore' => $request->arvore_id])->with(['success' => 'Ocorrência cadastrada com sucesso!']);
+        return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Ocorrência cadastrada com sucesso!']);
     }
 
     public function edit(Ocorrencia $ocorrencia)
@@ -111,6 +112,8 @@ class OcorrenciaController extends Controller
             $arquivo->save();
         }
 
-        return redirect()->route('arvores.show', ['arvore' => $request->arvore_id])->with(['success' => 'Ocorrência atualizada com sucesso!']);
+        $arvore = Arvore::find($request->arvore_id);
+
+        return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Ocorrência atualizada  com sucesso!']);
     }
 }

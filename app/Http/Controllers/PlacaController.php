@@ -36,7 +36,7 @@ class PlacaController extends Controller
                         $palavra_pequena .= '-';
                     }
                     $img->text(trim($palavra_pequena), 510, (335 + $incremento), function ($font) {
-                        $font->file(public_path('Now-Bold.otf'));
+                        $font->file(public_path('fonts/Now-Bold.otf'));
                         $font->size(80);
                         $font->color('#3b4342');
                         $font->valign('top');

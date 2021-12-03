@@ -5,6 +5,7 @@ use App\Http\Controllers\ArvoreController;
 use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
+use App\Http\Controllers\PlacaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,5 @@ Route::post('/especies/', [EspecieController::class, 'store'])->name('especies.s
 Route::resource('/arquivos', ArquivoController::class);
 
 Route::resource('foto', FotoController::class);
+
+Route::get('placa/{arvore}', [PlacaController::class, 'show'])->name('placa.show');

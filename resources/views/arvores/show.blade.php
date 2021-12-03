@@ -47,9 +47,9 @@
                             <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->gradient(59, 76, 66, 100, 200, 255, 'inverse_diagonal')->size(200)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} ">
                         </div>
                         <div class="text-center">
+                            Download
                             <a href="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(308.406)->color(59, 76, 66)->backgroundColor(144, 172, 142)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} " download="{{$arvore->codigo_unico}}_{{$arvore->especie->nome_cientifico}}.png">
-                                Download PNG
-                            </a>
+                                QrCode</a> | <a href="{{ route('placa.show', ['arvore' => $arvore->codigo_unico]) }}" download="{{ $arvore->nome_popular }}">Placa</a>
                         </div>
                     </div>
                 </div>

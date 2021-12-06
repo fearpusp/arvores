@@ -25,15 +25,15 @@
     </h4>
     <hr>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-sm">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-3-sm">
                         @if (count($arvore->fotos) > 0)
-                            <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;">
+                            <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;" class="rounded img-thumbnail">
                         @endif
                     </div>
-                    <div class="col-sm">
+                    <div class="col-9-sm">
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{ $arvore->especie->nome_popular }}</strong></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><i>{{ $arvore->especie->nome_cientifico }}</i></h6>
@@ -44,18 +44,19 @@
                             <p class="card-text">
                                 <a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-primary" target="_blank"><i class="fa fa-map-marker-alt"></i>  Localização (Maps)</a>
                             </p>
-                            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->gradient(59, 76, 66, 100, 200, 255, 'inverse_diagonal')->size(200)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} ">
-                        </div>
-                        <div class="text-center">
-                            Download
-                            <a href="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(308.406)->color(59, 76, 66)->backgroundColor(144, 172, 142)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} " download="{{$arvore->codigo_unico}}_{{$arvore->especie->nome_cientifico}}.png">
-                                QrCode</a> | <a href="{{ route('placa.show', ['arvore' => $arvore->codigo_unico]) }}" download="{{ $arvore->nome_popular }}">Placa</a>
+                            <p class="card-text">
+                                <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->gradient(59, 76, 66, 100, 200, 255, 'inverse_diagonal')->size(100)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} " class="rounded">
+                            </p>
+                            <br>
+                            <div class="card-text">
+                                <a href="{{ route('placa.show', ['arvore' => $arvore->codigo_unico]) }}" download="{{ $arvore->nome_popular }}" class="btn btn-sm btn-outline-primary">Download Placa</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-7">
             <div class="card">
                 <div class="card-header">
                     <h5>Histório de Ocorrências

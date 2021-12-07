@@ -15,6 +15,12 @@
         .modal-body {
             overflow-y: auto;
         }
+
+        .responsive {
+          width: 100%;
+          max-width: 800px;
+          height: auto;
+        }
     </style>
     @if (session()->has('success'))
     <div class="alert alert-success" id="div-sucesso">
@@ -101,10 +107,10 @@
 
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
             <div class="modal-content align-items-center">
               <div class="modal-body">
-                <img class="rounded" src="foto/{{$arvore->fotos->first()->id}}" style="max-width=550px; max-height:550px;">
+                <img class="rounded responsive" src="foto/{{$arvore->fotos->first()->id}}">
               </div>
             </div>
           </div>

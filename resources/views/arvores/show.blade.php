@@ -20,6 +20,7 @@
           width: 100%;
           max-width: 800px;
           height: auto;
+          max-height: 700px;
         }
     </style>
     @if (session()->has('success'))

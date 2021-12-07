@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .modal.show {
+          display: flex !important;
+          justify-content: center;
+        }
+
+        .modal-dialog {
+          align-self: center;
+          max-width: 80vw;
+        }
+
+        .modal-body {
+            overflow-y: auto;
+        }
+    </style>
     @if (session()->has('success'))
     <div class="alert alert-success" id="div-sucesso">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -30,7 +45,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-3-sm">
                         @if (count($arvore->fotos) > 0)
-                            <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;" class="rounded img-thumbnail">
+                                <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;" class="rounded img-thumbnail" data-toggle="modal" data-target="#exampleModal">
                         @endif
                     </div>
                     <div class="col-9-sm">
@@ -83,5 +98,17 @@
         <br>
             <a href="{{ route('arvores.index') }}" class="btn btn-info">Todas as árvores</a>
         </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content align-items-center">
+              <div class="modal-body">
+                <img class="rounded" src="foto/{{$arvore->fotos->first()->id}}" style="max-width=550px; max-height:550px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
 @endsection

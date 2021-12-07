@@ -47,7 +47,7 @@
                     <label for="porte" class="control-label">Porte</label>
                     <select class="form-control" name="porte" required>
                         <option value="pequeno">Pequeno</option>
-                        <option value="medio">Médio</option>
+                        <option value="médio">Médio</option>
                         <option value="grande">Grande</option>
                     </select>
                 </div>

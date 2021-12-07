@@ -81,7 +81,7 @@
         <div class="col-sm-7">
             <div class="card">
                 <div class="card-header">
-                    <h5>Histório de Ocorrências
+                    <h5>Histórico de Ocorrências
                         @can('admin')
                             <span class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Nova</a></span>
                         @endcan

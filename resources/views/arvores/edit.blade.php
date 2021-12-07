@@ -57,10 +57,10 @@
                         @else
                             <option value="pequeno">Pequeno</option>
                         @endif
-                        @if ($arvore->porte == "medio")
-                            <option value="medio" selected>Médio</option>
+                        @if ($arvore->porte == "médio")
+                            <option value="médio" selected>Médio</option>
                         @else
-                            <option value="medio">Médio</option>
+                            <option value="médio">Médio</option>
                         @endif
                         @if ($arvore->porte == "grande")
                             <option value="grande" selected>Grande</option>

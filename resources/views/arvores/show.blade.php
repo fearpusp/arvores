@@ -51,7 +51,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-3-sm">
                         @if (count($arvore->fotos) > 0)
-                                <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;" class="rounded img-thumbnail" data-toggle="modal" data-target="#exampleModal">
+                                <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;" class="rounded img-thumbnail" data-toggle="modal" data-target="#foto_modal">
                         @endif
                     </div>
                     <div class="col-9-sm">
@@ -101,12 +101,11 @@
             </div>
         </div>
         <div class="container text-center">
-        <br>
+            <br>
             <a href="{{ route('arvores.index') }}" class="btn btn-info">Todas as árvores</a>
         </div>
 
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="foto_modal" tabindex="-1" role="dialog" aria-labelledby="foto_modal_label" aria-hidden="true">
           <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
             <div class="modal-content align-items-center">
               <div class="modal-body">
@@ -115,6 +114,5 @@
             </div>
           </div>
         </div>
-
     </div>
 @endsection

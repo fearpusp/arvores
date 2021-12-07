@@ -19,15 +19,18 @@
 
     <h4 class="mb-4 text-center">Catálogo de árvores da FEA-RP</h4>
     <hr>
+    @can('admin')
+        <div>
+    @else
+        <div class="col-sm-8 container-fluid">
+    @endcan
     <table class="table table-bordered table-sm table-striped" id="todas_arvores" style="width: 100%;">
         <thead>
             <tr>
                 <th class="text-center">Código</th>
-                <th class="text-center">Nome popular</th>
-                <th class="text-center">Nome científico</th>
+                <th class="text-center">Nome popular (<i>Nome científico</i>)</th>
                 <th class="text-center">Porte</th>
                 <th class="text-center">Localização</th>
-                <th class="text-center">Visualizar</th>
                 @can('admin')
                     <th class="text-center">Ocorrências</th>
                     <th class="text-center">Editar</th>
@@ -38,15 +41,13 @@
         <tbody>
             @foreach ($arvores as $arvore)
                 <tr>
-                    <td>{{$arvore->codigo_unico}}</td>
-                    <td>{{$arvore->especie->nome_popular}}</td>
-                    <td><i>{{$arvore->especie->nome_cientifico}}</i></td>
-                    <td>{{ ucfirst($arvore->porte) }}</td>
+                    <td class="text-center">{{$arvore->codigo_unico}}</td>
+                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info">{{$arvore->especie->nome_popular}} (<i>{{$arvore->especie->nome_cientifico}})</i></a></td>
+                    <td class="text-center">{{ ucfirst($arvore->porte) }}</td>
                     <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>
                                     {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
                     </td>
-                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-sm btn-info"><i class="fas fa-play"></i> Página</a></td>
                     @can('admin')
                         <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
                         <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
@@ -61,7 +62,7 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table></div>
 @endsection
 @section('javascripts_bottom')
 <script>

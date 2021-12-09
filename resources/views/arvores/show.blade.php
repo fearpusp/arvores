@@ -110,7 +110,9 @@
           <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
             <div class="modal-content align-items-center">
               <div class="modal-body">
-                <img class="rounded responsive" src="foto/{{$arvore->fotos->first()->id}}">
+                @if (count($arvore->fotos) > 0)
+                    <img class="rounded responsive" src="foto/{{$arvore->fotos->first()->id}}">
+                @endif
               </div>
             </div>
           </div>

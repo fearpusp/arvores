@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <h4 class="mb-4 text-center">Catálogo de árvores da FEA-RP</h4>
+    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
     <hr>
     @can('admin')
         <div>

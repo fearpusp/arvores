@@ -6195,16 +6195,16 @@
         },
         {
             "name": "uspdev/laravel-usp-theme",
-            "version": "2.3.2",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uspdev/laravel-usp-theme.git",
-                "reference": "7cff815dbef7651db227692618aa6e8341d1119e"
+                "reference": "e483a3a15cfd934388ebfcde3be7708257a732e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/7cff815dbef7651db227692618aa6e8341d1119e",
-                "reference": "7cff815dbef7651db227692618aa6e8341d1119e",
+                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/e483a3a15cfd934388ebfcde3be7708257a732e4",
+                "reference": "e483a3a15cfd934388ebfcde3be7708257a732e4",
                 "shasum": ""
             },
             "type": "library",
@@ -6239,9 +6239,9 @@
             "description": "usp theme for laravel",
             "support": {
                 "issues": "https://github.com/uspdev/laravel-usp-theme/issues",
-                "source": "https://github.com/uspdev/laravel-usp-theme/tree/2.3.2"
+                "source": "https://github.com/uspdev/laravel-usp-theme/tree/2.3.4"
             },
-            "time": "2021-09-20T16:37:28+00:00"
+            "time": "2021-12-10T17:01:31+00:00"
         },
         {
             "name": "uspdev/senhaunica-socialite",

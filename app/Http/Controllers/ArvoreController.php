@@ -73,7 +73,7 @@ class ArvoreController extends Controller
         $foto->path = $request->file('foto')->store('./fotos');
         $foto->save();
 
-        return redirect()->route('arvores.index')->with(['success' => 'Árvore cadastrada com sucesso!']);
+        return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Árvore cadastrada com sucesso!']);
     }
 
     public function show(string $codigo)

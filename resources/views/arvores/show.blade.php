@@ -93,7 +93,9 @@
                         @if (count($ocorrencia->arquivos) > 0)
                             <small>- <a href="arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo</a></small>
                         @endif
-                        <a href="{{ route('ocorrencias.edit', ['ocorrencia' => $ocorrencia->id]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
+                        @can('admin')
+                            <a href="{{ route('ocorrencias.edit', ['ocorrencia' => $ocorrencia->id]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
+                        @endcan
                         </li>
                     @endforeach
                 </ul>

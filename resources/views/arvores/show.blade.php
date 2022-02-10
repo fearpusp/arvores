@@ -53,7 +53,7 @@
                     <div class="col-3-sm" style="position: relative;" >
                         @if (count($arvore->fotos) > 0)
                             <img src="foto/{{$arvore->fotos->first()->id}}" alt="..." style="width: 20rem;" class="rounded img-thumbnail" data-toggle="modal" data-target="#foto_modal">
-                            <i style="position: absolute; bottom: 0; left: 90%;" class="fas fa-search-plus fa-2x"></i>
+                            <i style="position: absolute; bottom: 0; left: 90%; background-color:  white; color:black;" class="fas fa-search-plus fa-2x"></i>
                         @endif
                     </div>
                     <div class="col-9-sm">

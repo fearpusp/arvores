@@ -90,12 +90,10 @@
                 <ul class="list-group list-group-flush">
                     @foreach ($ocorrencias as $ocorrencia)
                         <li class="list-group-item">{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y') }}: {{ $ocorrencia->tipo_ocorrencia->descricao }}
-                        @can('admin')
-                            @if (count($ocorrencia->arquivos) > 0)
-                                <small>- <a href="arvores/arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo ({{ $ocorrencia->arquivos->first()->original_name }})</a></small>
-                            @endif
-                            <a href="{{ route('ocorrencias.edit', ['ocorrencia' => $ocorrencia->id]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
-                        @endcan
+                        @if (count($ocorrencia->arquivos) > 0)
+                            <small>- <a href="arquivos/{{ $ocorrencia->arquivos->first()->id }}">Anexo</a></small>
+                        @endif
+                        <a href="{{ route('ocorrencias.edit', ['ocorrencia' => $ocorrencia->id]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
                         </li>
                     @endforeach
                 </ul>

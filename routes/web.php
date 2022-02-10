@@ -35,7 +35,7 @@ Route::post('/ocorrencias/', [OcorrenciaController::class, 'store'])->name('ocor
 Route::get('/ocorrencias/{ocorrencia}', [OcorrenciaController::class, 'edit'])->name('ocorrencias.edit')->middleware('can:admin');
 Route::patch('/ocorrencias/{ocorrencia}', [OcorrenciaController::class, 'update'])->name('ocorrencias.update')->middleware('can:admin');
 Route::post('/especies/', [EspecieController::class, 'store'])->name('especies.store')->middleware('can:admin');
-Route::resource('/arquivos', ArquivoController::class);
+Route::resource('arquivos', ArquivoController::class);
 
 Route::resource('foto', FotoController::class);
 

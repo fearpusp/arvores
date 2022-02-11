@@ -31,4 +31,9 @@ class Arvore extends Model
     {
         return $this->belongsTo(Especie::class);
     }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
+    }
 }

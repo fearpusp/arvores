@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArquivoController;
 use App\Http\Controllers\ArvoreController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
@@ -40,3 +41,8 @@ Route::resource('arquivos', ArquivoController::class);
 Route::resource('foto', FotoController::class);
 
 Route::get('placa/{arvore}', [PlacaController::class, 'show'])->name('placa.show');
+
+// Comentários
+Route::get('/comentarios/create/{arvore}', [ComentarioController::class, 'create'])->name('comentarios.create')->middleware('can:admin,user');
+Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('comentarios.store')->middleware('can:admin,user');
+Route::get('/comentarios/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');

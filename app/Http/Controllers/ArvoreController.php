@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Arquivo;
 use App\Models\Arvore;
+use App\Models\Comentario;
 use App\Models\Especie;
 use App\Models\Foto;
 use App\Models\Ocorrencia;
@@ -80,7 +81,9 @@ class ArvoreController extends Controller
     {
         $arvore = Arvore::where('codigo_unico', $codigo)->get()->first();
         $ocorrencias = Ocorrencia::where('arvore_id', $arvore->id)->orderBy('data_hora', 'asc')->orderBy('id', 'asc')->get();
-        return view('arvores.show', compact('arvore', 'ocorrencias'));
+        $comentarios = Comentario::where('arvore_id', $arvore->id)->where('moderado', true)->where('publicar', true)->orderBy('created_at', 'asc')->orderBy('id', 'asc')->get();
+        $comentarios_nao_moderados = Comentario::where('arvore_id', $arvore->id)->where('moderado', false)->orderBy('created_at', 'asc')->get();
+        return view('arvores.show', compact('arvore', 'ocorrencias', 'comentarios', 'comentarios_nao_moderados'));
     }
 
     public function edit(Arvore $arvore)

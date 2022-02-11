@@ -101,6 +101,26 @@
                     @endforeach
                 </ul>
             </div>
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h5>Comentários
+                        @can('admin')
+                            @if ($comentarios_nao_moderados->count() > 0)
+                                <span class="text-center"><a href="{{ route('comentarios.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-success"><i class="fas fa-exclamation"></i> Moderação</a></span>
+                            @endif
+                        @endcan
+                        @can(['admin', 'user'])
+                           <span class="text-center"><a href="{{ route('comentarios.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Novo</a></span>
+                        @endcan
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach ($comentarios as $comentario)
+                        <li class="list-group-item">{{ $comentario->comentario }} <small>({{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }} por {{ $comentario->user->name }})</small></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
         <div class="container text-center">
             <br>

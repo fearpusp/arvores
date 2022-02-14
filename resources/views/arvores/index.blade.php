@@ -42,7 +42,13 @@
             @foreach ($arvores as $arvore)
                 <tr>
                     <td class="text-center">{{$arvore->codigo_unico}}</td>
-                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info">{{$arvore->especie->nome_popular}} (<i>{{$arvore->especie->nome_cientifico}})</i></a></td>
+                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info">{{$arvore->especie->nome_popular}} (<i>{{$arvore->especie->nome_cientifico}})</i></a>
+                    @can('admin')
+                        @if ($arvore->comentarios_nao_moderados->count() > 0)
+                            <span class="text-center"><a href="{{ route('comentarios.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-success"><small><i class="fas fa-exclamation"></i> Moderação</small></a></span>
+                        @endif
+                    @endcan
+                    </td>
                     <td class="text-center">{{ ucfirst($arvore->porte) }}</td>
                     <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
                                     target="_blank"><i class="fa fa-map-marker-alt"></i>

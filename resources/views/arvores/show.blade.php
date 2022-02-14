@@ -110,9 +110,14 @@
                                 <span class="text-center"><a href="{{ route('comentarios.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-success"><i class="fas fa-exclamation"></i> Moderação</a></span>
                             @endif
                         @endcan
-                        @can(['admin', 'user'])
-                           <span class="text-center"><a href="{{ route('comentarios.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Novo</a></span>
-                        @endcan
+                        @guest
+                            <span class="text-right"><small><a href="{{ route('login') }}">(Faça login para comentar)</a></small></span>
+                        @endguest
+                        @auth
+                            @can('user')
+                               <span class="text-center"><a href="{{ route('comentarios.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Novo</a></span>
+                            @endcan
+                        @endauth
                     </h5>
                 </div>
                 <ul class="list-group list-group-flush">

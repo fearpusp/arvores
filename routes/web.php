@@ -43,6 +43,7 @@ Route::resource('foto', FotoController::class);
 Route::get('placa/{arvore}', [PlacaController::class, 'show'])->name('placa.show');
 
 // Comentários
-Route::get('/comentarios/create/{arvore}', [ComentarioController::class, 'create'])->name('comentarios.create')->middleware('can:admin,user');
-Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('comentarios.store')->middleware('can:admin,user');
-Route::get('/comentarios/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');
+Route::get('/comentarios/create/{arvore}', [ComentarioController::class, 'create'])->name('comentarios.create')->middleware('can:user');
+Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('comentarios.store')->middleware('can:user');
+Route::get('/comentarios/edit/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');
+Route::patch('/comentarios/{arvore}', [ComentarioController::class, 'update'])->name('comentarios.update')->middleware('can:admin');

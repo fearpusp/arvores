@@ -27,8 +27,9 @@
     <div class="container-fluid">
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form" action="{{ route('comentarios.store') }}" method="POST">
+        <form class="form" action="{{ route('comentarios.update', ['arvore' => $arvore->id]) }}" method="POST">
             @csrf
+            @method('patch')
             <input type="hidden" name="arvore_id" value="{{ $arvore->id }}">
             <div>
                 <table class="table table-bordered table-sm table-striped" id="todas_arvores" style="width: 100%;">
@@ -41,7 +42,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <form>
                         @foreach ($comentarios as $comentario)
                             <tr>
                                 <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</td>
@@ -49,24 +49,23 @@
                                 <td class="text-center">{{$comentario->comentario}}</td>
                                 <td class="text-center">
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="aprovar{{$comentario->id}}" name="aprovar" class="custom-control-input">
-                                      <label class="custom-control-label" for="customRadio1">Aprovar</label>
+                                        <input type="radio" id="aprovar{{$comentario->id}}" name="aprovar[{{$comentario->id}}]" value="sim" class="custom-control-input" required>
+                                        <label class="custom-control-label" for="aprovar{{$comentario->id}}">Aprovar</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="recusar{{$comentario->id}}" name="aprovar" class="custom-control-input">
-                                      <label class="custom-control-label" for="customRadio2">Recusar</label>
+                                        <input type="radio" id="recusar{{$comentario->id}}" name="aprovar[{{$comentario->id}}]" value="nao" class="custom-control-input" required>
+                                        <label class="custom-control-label" for="recusar{{$comentario->id}}">Recusar</label>
                                     </div>
                                 </td>
                             </tr>
                         @endforeach
-                        </form>
                     </tbody>
                 </table>
             </div>
             <hr>
             <div class="row">
                 <div class="col text-center">
-                    <button type="submit" class="btn btn-primary">Salvar comentário</button>
+                    <button type="submit" class="btn btn-primary">Salvar moderação</button>
                     <a href="{{ route('arvores.index') }}" class="btn btn-default">Cancelar</a>
                 </div>
             </div>

@@ -36,4 +36,9 @@ class Arvore extends Model
     {
         return $this->hasMany(Comentario::class);
     }
+
+    public function comentarios_nao_moderados()
+    {
+        return $this->hasMany(Comentario::class)->where('moderado', false);
+    }
 }

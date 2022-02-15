@@ -15,6 +15,7 @@
 
 @section('javascripts_bottom')
 @parent
+<script src="{{ asset('js/share.js') }}"></script>
 <script>
     // Seu código .js
 </script>

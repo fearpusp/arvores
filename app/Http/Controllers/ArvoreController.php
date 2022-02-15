@@ -9,7 +9,6 @@ use App\Models\Especie;
 use App\Models\Foto;
 use App\Models\Ocorrencia;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -83,7 +82,14 @@ class ArvoreController extends Controller
         $ocorrencias = Ocorrencia::where('arvore_id', $arvore->id)->orderBy('data_hora', 'asc')->orderBy('id', 'asc')->get();
         $comentarios = Comentario::where('arvore_id', $arvore->id)->where('moderado', true)->where('publicar', true)->orderBy('created_at', 'asc')->orderBy('id', 'asc')->get();
         $comentarios_nao_moderados = Comentario::where('arvore_id', $arvore->id)->where('moderado', false)->orderBy('created_at', 'asc')->get();
-        return view('arvores.show', compact('arvore', 'ocorrencias', 'comentarios', 'comentarios_nao_moderados'));
+        $links = \Share::page(
+            route('arvores.show', ['arvore' => $arvore->codigo_unico]),
+            "Veja essa {$arvore->especie->nome_popular} na fea-RP @fearpusp",
+            ['title' => 'Compartilhe']
+        )->facebook()
+            ->twitter()
+            ->linkedin();
+        return view('arvores.show', compact('arvore', 'ocorrencias', 'comentarios', 'comentarios_nao_moderados', 'links'));
     }
 
     public function edit(Arvore $arvore)

@@ -22,6 +22,23 @@
           height: auto;
           max-height: 700px;
         }
+
+        #social-links ul{
+            /*padding-left: 0;*/
+            padding: 0;
+        }
+
+         #social-links ul li {
+            display: inline-block;
+        }
+
+        #social-links ul li a {
+            padding: 6px;
+            /*border: 1px solid #ccc;
+            border-radius: 5px;*/
+            margin: 1px;
+            font-size: 25px;
+
     </style>
     @if (session()->has('success'))
     <div class="alert alert-success" id="div-sucesso">
@@ -71,8 +88,11 @@
                                 <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->gradient(59, 76, 66, 100, 200, 255, 'inverse_diagonal')->size(100)->generate(route('arvores.show', ['arvore' => $arvore->codigo_unico]))) !!} " class="rounded">
                             </p>
                             <br>
-                            <div class="card-text">
-                                <a href="{{ route('placa.show', ['arvore' => $arvore->codigo_unico]) }}" download="{{ $arvore->nome_popular }}" class="btn btn-sm btn-outline-primary">Download Placa</a>
+                            <div class="card-text text-center">
+                                <p><a href="{{ route('placa.show', ['arvore' => $arvore->codigo_unico]) }}" download="{{ $arvore->nome_popular }}" class="btn btn-sm btn-outline-primary">Download Placa</a></p>
+                                <p><div class="text-center">
+                                    {!! $links !!}
+                                </div></p>
                             </div>
                         </div>
                     </div>
@@ -144,4 +164,6 @@
           </div>
         </div>
     </div>
+@endsection
+@section('javascripts_bottom')
 @endsection

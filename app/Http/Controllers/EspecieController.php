@@ -10,6 +10,7 @@ class EspecieController extends Controller
 {
     public function index()
     {
+        \UspTheme::activeUrl('especies');
         $especies = Especie::all();
 
         return view('arvores.especies.index', compact('especies'));
@@ -17,6 +18,7 @@ class EspecieController extends Controller
 
     public function create()
     {
+        \UspTheme::activeUrl('especies/create');
         return view('arvores.especies.create');
     }
 

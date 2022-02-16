@@ -1,12 +1,13 @@
 <?php
 
-$arvores = [
+$menu = [
     [
         'text' => 'Listar todas',
         'url' => '',
+        'can' => 'admin',
     ],
     [
-        'text' => 'Cadastrar',
+        'text' => 'Nova árvore',
         'url' => 'create',
         'can' => 'admin',
     ],
@@ -18,14 +19,6 @@ $arvores = [
     [
         'text' => 'Cadastrar espécie',
         'url' => 'especies/create',
-        'can' => 'admin',
-    ],
-];
-
-$menu = [
-    [
-        'text' => '<i class="fas fa-home"></i>  Administrar',
-        'submenu' => $arvores,
         'can' => 'admin',
     ],
     [

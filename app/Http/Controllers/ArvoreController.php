@@ -16,6 +16,7 @@ class ArvoreController extends Controller
 {
     public function index()
     {
+        \UspTheme::activeUrl('');
         $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
@@ -27,6 +28,7 @@ class ArvoreController extends Controller
 
     public function create()
     {
+        \UspTheme::activeUrl('create');
         $especies = Especie::orderBy('nome_popular', 'asc')->get();
         return view('arvores.create', compact('especies'));
     }

@@ -16,6 +16,7 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.10",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "uspdev/laravel-usp-theme": "^2.3",
         "uspdev/senhaunica-socialite": "^4.1"

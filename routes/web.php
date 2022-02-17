@@ -7,6 +7,7 @@ use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
 use App\Http\Controllers\PlacaController;
+use App\Http\Livewire\ListaArvores;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,3 +48,5 @@ Route::get('/comentarios/create/{arvore}', [ComentarioController::class, 'create
 Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('comentarios.store')->middleware('can:user');
 Route::get('/comentarios/edit/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');
 Route::patch('/comentarios/{arvore}', [ComentarioController::class, 'update'])->name('comentarios.update')->middleware('can:admin');
+
+Route::get('/livewire', ListaArvores::class)->name('livewire');

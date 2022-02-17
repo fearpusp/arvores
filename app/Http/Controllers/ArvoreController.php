@@ -21,6 +21,7 @@ class ArvoreController extends Controller
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
             ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
+            ->orderBy('codigo_unico', 'asc')
             ->get();
 
         return view('arvores.index', compact('arvores'));

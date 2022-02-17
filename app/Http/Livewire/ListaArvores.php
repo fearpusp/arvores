@@ -12,16 +12,21 @@ class ListaArvores extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $search = '';
+    public $search = null;
+    public $perPage = 50;
 
     public function updatingSearch()
     {
         $this->resetPage();
     }
 
+    public function updatingPerPage()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        //$arvores = Arvore::paginate(50);
         $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
@@ -30,7 +35,8 @@ class ListaArvores extends Component
             ->where('especies.nome_popular', 'ilike', '%' . $this->search . '%')
             ->orWhere('especies.nome_cientifico', 'ilike', '%' . $this->search . '%')
             ->orWhere('codigo_unico', 'ilike', '%' . $this->search . '%')
-            ->paginate(50);
+            ->paginate($this->perPage);
+
         return view('livewire.lista-arvores', compact('arvores'))->layout('layouts.livewire');
     }
 }

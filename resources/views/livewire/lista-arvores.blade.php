@@ -1,10 +1,34 @@
-<div>
-    <div class="row justify-content-end">
-        <div class="col-3">
-            <label for="search">Pesquisar</label>
-            <input wire:model="search" type="text" class="form-control" id="search" autofocus style="margin-bottom: 5px;">
+@can('admin')
+<div class="col-sm-11 container-fluid">
+@else
+<div class="col-sm-8 container-fluid">
+@endcan
+    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
+    <hr>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-1">
+                <select class="form-control text-center" wire:model='perPage'>
+                    <option value="25">25</option>
+                    <option value="50" default>50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <div wire:loading class="alert alert-info text-center"><i class="fas fa-spinner"></i> Carregando árvores...</div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <label class="form-group" for="search">Pesquisar</label>
+                    <div class="col-6">
+                        <input wire:model="search" type="text" class="form-control" id="search" autofocus>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </div><br>
     <table class="table table-bordered table-sm table-striped" id="todas_arvores" style="width: 100%;">
         <thead>
             <tr>
@@ -50,7 +74,9 @@
             @endforeach
         </tbody>
     </table>
-    <div class="row justify-content-center">
-        {{ $arvores->links() }}
-    </div>
+    @if ($perPage)
+        <div class="row justify-content-center">
+            <span class="form-control col-1 text-center" style="border: 0;"> Total: {{ $arvores->total() }} &nbsp; </span>{{ $arvores->links() }}
+        </div>
+    @endif
 </div>

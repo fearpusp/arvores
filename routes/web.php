@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArvoreController::class, 'index'])->name('arvores.index');
+Route::get('/lista_antiga', [ArvoreController::class, 'index'])->name('arvores.index');
 Route::get('/create', [ArvoreController::class, 'create'])->name('arvores.create')->middleware('can:admin');
 Route::post('/arvores', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');
 Route::get('/show/{arvore}', [ArvoreController::class, 'show'])->name('arvores.show');
@@ -49,4 +49,4 @@ Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('come
 Route::get('/comentarios/edit/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');
 Route::patch('/comentarios/{arvore}', [ComentarioController::class, 'update'])->name('comentarios.update')->middleware('can:admin');
 
-Route::get('/livewire', ListaArvores::class)->name('livewire');
+Route::get('/', ListaArvores::class)->name('livewire');

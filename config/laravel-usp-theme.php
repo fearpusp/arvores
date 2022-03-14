@@ -2,9 +2,16 @@
 
 $menu = [
     [
-        'text' => 'Listar todas',
+        'text' => '<i class="fas fa-home"></i> Início',
         'url' => '',
-        'can' => 'admin',
+    ],
+    [
+        'text' => 'Lista completa',
+        'url' => 'index',
+    ],
+    [
+        'text' => 'Mapa com todas árvores',
+        'url' => 'mapa',
     ],
     [
         'text' => 'Nova árvore',

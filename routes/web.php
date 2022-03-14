@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArvoreController::class, 'index'])->name('arvores.index');
+Route::get('/', [ArvoreController::class, 'inicio'])->name('arvores.inicio');
+Route::get('/index', [ArvoreController::class, 'index'])->name('arvores.index');
 Route::get('/create', [ArvoreController::class, 'create'])->name('arvores.create')->middleware('can:admin');
 Route::post('/arvores', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');
 Route::get('/show/{arvore}', [ArvoreController::class, 'show'])->name('arvores.show');
@@ -47,3 +48,8 @@ Route::get('/comentarios/create/{arvore}', [ComentarioController::class, 'create
 Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('comentarios.store')->middleware('can:user');
 Route::get('/comentarios/edit/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');
 Route::patch('/comentarios/{arvore}', [ComentarioController::class, 'update'])->name('comentarios.update')->middleware('can:admin');
+
+Route::get('/mapa', function () {
+    \UspTheme::activeUrl('mapa');
+    return view('arvores.mapa');
+})->name('arvores.mapa');

@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Validator;
 
 class ArvoreController extends Controller
 {
-    public function index()
+    public function inicio()
     {
         \UspTheme::activeUrl('');
+        return view('arvores.inicio');
+    }
+
+    public function index()
+    {
+        \UspTheme::activeUrl('index');
         $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')

@@ -102,7 +102,7 @@
         <div class="col-sm-7">
             <div class="card">
                 <div class="card-header">
-                    <h5>Histórico de Ocorrências
+                    <h5>Histórico de Ocorrências <small>(Uso interno)</small>
                         @can('admin')
                             <span class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn-sm btn-warning"><i class="fas fa-exclamation"></i> Nova</a></span>
                         @endcan
@@ -131,7 +131,7 @@
                             @endif
                         @endcan
                         @guest
-                            <span class="text-right"><small><a href="{{ route('login') }}">(Faça login para comentar)</a></small></span>
+                            <span class="text-right"><small><a href="{{ route('login') }}">(Aberto para comunidade USP - Faça login para comentar)</a></small></span>
                         @endguest
                         @auth
                             @can('user')

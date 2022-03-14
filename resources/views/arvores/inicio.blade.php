@@ -29,7 +29,7 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                  Para cada árvore: <br>
+                  Para cada árvore: <br><br>
                   <ul>
                     <li>Foto</li>
                     <li>Localização (GPS)</li>
@@ -50,7 +50,7 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                  A navegação é feita pelos itens da barra superior: <br>
+                  A navegação é feita pelos itens da barra superior: <br><br>
                 <ul>
                     <li><a href="{{ route('arvores.index') }}"><i>Listagem completa</a></i> exibe todas as árvores catalogadas. A partir dessa lista é possível acessar a página de cada árvore</li>
                     <li><i><a href="{{ route('arvores.mapa') }}">Mapa com todas árvores</a></i> exibe um mapa do google com as marcações de localização das árvores</li>

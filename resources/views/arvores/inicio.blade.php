@@ -1,24 +1,14 @@
 @extends ('layouts.app')
 @section ('content')
-    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
-    <hr>
     <div class="col-sm-10 container-fluid">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4"><span class="align-middle"><img src="{{ asset('logo_fearp_arvore_transparente.png') }}"> ÁRVORES da fea-RP!</span></h1>
+              <p>Catálogo com todas as árvores que compõe o espaço físico da nossa Escola!</p>
+              <p>Cada árvore tem sua página específica com informações próprias!</p>
+            </div>
+        </div>
         <div class="accordion" id="accordionExample">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  APRESENTAÇÃO
-                </button>
-              </h2>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                Sistema tem como objetivo listar todas as árvores que compõe o espaço físico da nossa Escola!
-              </div>
-            </div>
-          </div>
           <div class="card">
             <div class="card-header" id="headingTwo">
               <h2 class="mb-0">
@@ -58,9 +48,26 @@
               </div>
             </div>
           </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    INFORMAÇÕES PARA DESENVOLVEDORES? <span class="text-right"><i class="fas fa-plus"></i></span>
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+                  Caso queira utilizar em sua unidade acesse o repositório: <a href="https://gitlab.com/fearp/arvores" target="_blank"><i>GitLab</a></i>
+                  <br><br>
+                  Sistema desenvolvido com tecnologias abertas: <br><br>
+                <ul>
+                    <li><i><a href="https://github.com/laravel/laravel" target="_blank"><i>Laravel</a></i> <i>framework</i> PHP</li>
+                    <li><a href="https://github.com/uspdev/" target=""_blank>Projetos do grupo USPDev</a></i> senhaunica-socialite; laravel-usp-theme, etc.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 @endsection
-@section('javascripts_bottom')
-@endsection
-

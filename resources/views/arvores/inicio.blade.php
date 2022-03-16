@@ -4,8 +4,8 @@
         <div class="jumbotron">
             <div class="container">
                 <h1 class="display-4"><span class="align-middle"><img src="{{ asset('logo_fearp_arvore_transparente.png') }}"> ÁRVORES da fea-RP!</span></h1>
-              <p>Catálogo com todas as árvores que compõe o espaço físico da nossa Escola!</p>
-              <p>Cada árvore tem sua página específica com informações próprias!</p>
+                <p>Este espaço foi constituído como o repositório das árvores que ficam dentro das dependências da FEA-RP. </p>
+                <p>Nele, o usuário poderá acessar diversas informações das plantas da faculdade e interagir.</p>
             </div>
         </div>
         <div class="accordion" id="accordionExample">
@@ -19,14 +19,8 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                  Para cada árvore: <br><br>
-                  <ul>
-                    <li>Foto</li>
-                    <li>Localização (GPS)</li>
-                    <li>Ícones para compartilhamentos</li>
-                    <li>Histórico de ocorrências</li>
-                    <li>Área de comentários aberta à comunidade USP</li>
-                  </ul>
+                  <p>Entre as informações disponíveis estão os nomes popular e científico, porte, localização, foto e histórico de ocorrências. Também é possível compartilhar as informações nas redes sociais Facebook, Twitter e LinkedIn e fazer comentários.</p>
+                  <p>Todas as árvores estão recebendo também placas de identificação e um QR Code específico. O usuário poderá escanear o código com seu celular e será direcionado à página da árvore em questão e visualizar as informações dela.</p>
               </div>
             </div>
           </div>
@@ -52,11 +46,33 @@
             <div class="card-header" id="headingFour">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    INFORMAÇÕES PARA DESENVOLVEDORES? <span class="text-right"><i class="fas fa-plus"></i></span>
+                    CRÉDITOS <span class="text-right"><i class="fas fa-plus"></i></span>
                 </button>
               </h2>
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+                  <b>Catálogo:</b><br>
+                  <p>Adriano Apolinário</p>
+
+                  <b>Desenvolvimento do sistema:</b><br>
+                  <p>STI<br>
+                      Lucas Flóro<br>
+                      Kleber Benatti<br>
+                  </p>
+                  <b>Logo e Design das placas:</b><br>
+                    Leonardo Rezende (Assistente de Comunicação)
+              </div>
+            </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    INFORMAÇÕES PARA DESENVOLVEDORES? <span class="text-right"><i class="fas fa-plus"></i></span>
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
               <div class="card-body">
                   Caso queira utilizar em sua unidade acesse o repositório: <a href="https://gitlab.com/fearp/arvores" target="_blank"><i>GitLab</a></i>
                   <br><br>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArquivoController;
 use App\Http\Controllers\ArvoreController;
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\ComentarioFotoController;
 use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
@@ -53,3 +54,5 @@ Route::get('/mapa', function () {
     \UspTheme::activeUrl('mapa');
     return view('arvores.mapa');
 })->name('arvores.mapa');
+
+Route::resource('comentario_foto', ComentarioFotoController::class);

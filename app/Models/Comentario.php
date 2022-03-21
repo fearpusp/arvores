@@ -19,4 +19,9 @@ class Comentario extends Model
     {
         return $this->belongsTo(Arvore::class);
     }
+
+    public function fotos()
+    {
+        return $this->hasMany(ComentarioFoto::class);
+    }
 }

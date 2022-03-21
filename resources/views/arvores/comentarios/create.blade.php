@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <!-- form start -->
-            <form class="form" action="{{ route('comentarios.store') }}" method="POST">
+            <form class="form" action="{{ route('comentarios.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="arvore_id" value="{{ $arvore->id }}">
                 <div class="card">
@@ -31,7 +31,14 @@
                         <div class="card-text">
                             <label for="comentario" class="control-label">Seu comentário</label>
                             <textarea class="form-control" name="comentario" autofocus required rows="4"></textarea>
-                        </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="col text-center">
+                                    <label for="foto" class="control-label">Foto/imagem <small>(até 2MB)</small></label>
+                                    <input type="file" name="foto" accept="image/png, image/jpeg, image/jpg">
+                                </div>
+                            </div>
+                            </div>
                         <hr>
                         <div class="col text-center">
                             <button type="submit" class="btn btn-primary">Salvar comentário</button>

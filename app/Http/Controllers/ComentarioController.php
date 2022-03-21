@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Arvore;
 use App\Models\Comentario;
+use App\Models\ComentarioFoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +26,7 @@ class ComentarioController extends Controller
         // Componente responsável pela validação
         $validator = Validator::make($request->all(), [
             'comentario' => 'required|min:5',
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
         ], $messages);
 
         // Validação
@@ -37,6 +39,14 @@ class ComentarioController extends Controller
         $comentario->arvore_id = $request->arvore_id;
         $comentario->user_id = Auth::user()->id;
         $comentario->save();
+
+        if (count($request->file())) {
+            $comentario_foto = new ComentarioFoto();
+            $comentario_foto->comentario_id = $comentario->id;
+            $comentario_foto->original_name = $request->file('foto')->getClientOriginalName();
+            $comentario_foto->path = $request->file('foto')->store('./comentario_fotos');
+            $comentario_foto->save();
+        }
 
         $arvore = Arvore::find($request->arvore_id);
         return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico]);

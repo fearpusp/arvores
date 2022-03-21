@@ -38,6 +38,7 @@
                             <th class="text-center">Data</th>
                             <th class="text-center">Usuário</th>
                             <th class="text-center">Comentário</th>
+                            <th class="text-center">Foto/imagem</th>
                             <th class="text-center">Opções</th>
                         </tr>
                     </thead>
@@ -47,6 +48,11 @@
                                 <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</td>
                                 <td class="text-center">{{$comentario->user->name}}</td>
                                 <td class="text-center">{{$comentario->comentario}}</td>
+                                <td class="text-center">
+                                    @if (count($comentario->fotos) > 0)
+                                        <img src="comentario_foto/{{$comentario->fotos->first()->id}}">{{$comentario->fotos}}</td>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" id="aprovar{{$comentario->id}}" name="aprovar[{{$comentario->id}}]" value="sim" class="custom-control-input" required>

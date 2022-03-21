@@ -4,8 +4,8 @@
         <div class="jumbotron">
             <div class="container">
                 <h1 class="display-4"><span class="align-middle"><img src="{{ asset('logo_fearp_arvore_transparente.png') }}"> ÁRVORES da fea-RP!</span></h1>
-                <p>Este espaço foi constituído como o repositório das árvores que ficam dentro das dependências da FEA-RP. </p>
-                <p>Nele, o usuário poderá acessar diversas informações das plantas da faculdade e interagir.</p>
+                <p>O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Sr. Antônio Justino, chefe do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus. O sistema tem o objetivo de apresentar à comunidade as árvores da Faculdade bem como acompanhar seu manejo (ocorrência de podas, análise de risco etc.).</p>
+                <p>Além das cerca de 250 árvores catalogadas no momento da criação do sistema, a Faculdade possui outro conjunto arbóreo não contabilizado, localizado em uma área preservada delimitada pelo Bloco B1, Rua Pedreira de Freitas, Bloco C1 e Cantina.</p>
             </div>
         </div>
         <div class="accordion" id="accordionExample">
@@ -19,8 +19,8 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                  <p>Entre as informações disponíveis estão os nomes popular e científico, porte, localização, foto e histórico de ocorrências. Também é possível compartilhar as informações nas redes sociais Facebook, Twitter e LinkedIn e fazer comentários.</p>
-                  <p>Todas as árvores estão recebendo também placas de identificação e um QR Code específico. O usuário poderá escanear o código com seu celular e será direcionado à página da árvore em questão e visualizar as informações dela.</p>
+                <p>Todas as árvores receberam placas de identificação e um QR Code específico. O usuário poderá escanear o código com seu celular e será direcionado à página da árvore em questão e visualizar as informações dela.</p>
+                <p>No sistema, o usuário poderá acessar diversas informações das plantas da faculdade e interagir, comentando e compartilhando nas redes sociais Facebook, Twitter e LinkedIn. Entre as informações disponíveis estão os nomes popular e científico, porte, localização, foto e histórico de ocorrências.</p>
               </div>
             </div>
           </div>
@@ -74,12 +74,12 @@
             </div>
             <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
               <div class="card-body">
-                  Caso queira utilizar em sua unidade acesse o repositório: <a href="https://gitlab.com/fearp/arvores" target="_blank"><i>GitLab</a></i>
+                  Caso queira utilizar em sua unidade acesse o repositório: <a href="https://github.com/fearpusp/arvores" target="_blank"><i>Github</a></i>
                   <br><br>
                   Sistema desenvolvido com tecnologias abertas: <br><br>
                 <ul>
                     <li><i><a href="https://github.com/laravel/laravel" target="_blank"><i>Laravel</a></i> <i>framework</i> PHP</li>
-                    <li><a href="https://github.com/uspdev/" target=""_blank>Projetos do grupo USPDev</a></i> senhaunica-socialite; laravel-usp-theme, etc.</li>
+                    <li><a href="https://github.com/uspdev/" target=""_blank>Projetos do grupo USPDev</a></i> senhaunica-socialite; laravel-usp-theme.</li>
                 </ul>
               </div>
             </div>

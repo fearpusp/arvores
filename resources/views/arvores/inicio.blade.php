@@ -34,7 +34,7 @@
             <div class="card-header" id="headingThree">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    FLUXOGRAMA DE PODA <span class="text-right"><i class="fas fa-plus"></i></span>
+                    PROCEDIMENTOS PARA MANEJO DAS ÁRVORES <span class="text-right"><i class="fas fa-plus"></i></span>
                 </button>
               </h2>
             </div>

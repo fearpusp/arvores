@@ -143,7 +143,7 @@
                     <div class="row">
                     @php $contador = 1; @endphp
                     @foreach ($comentarios as $comentario)
-                        <div class="col-4">
+                        <div class="col-sm-4">
                             <div class="card" style="width: 16rem;">
                             @if (count($comentario->fotos) > 0)
                                   <img src="comentario_foto/{{$comentario->fotos->first()->id}}" class="card-img-top rounded" data-toggle="modal" width data-target="#foto_modal_{{$comentario->fotos->first()->id}}"></td>

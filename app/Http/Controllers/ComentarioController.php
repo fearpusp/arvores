@@ -54,7 +54,7 @@ class ComentarioController extends Controller
 
     public function edit(Arvore $arvore)
     {
-        $comentarios = $arvore->comentarios;
+        $comentarios = $arvore->comentarios_nao_moderados;
         return view('arvores.comentarios.edit', compact('arvore', 'comentarios'));
     }
 

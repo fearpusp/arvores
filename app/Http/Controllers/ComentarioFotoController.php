@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ComentarioFotoController extends Controller
 {
-    public function show(ComentarioFoto $foto)
+    public function show(ComentarioFoto $comentario_foto)
     {
-        dd($foto);
-        return Storage::download($foto->path, $foto->original_name);
+        return Storage::download($comentario_foto->path, $comentario_foto->original_name);
     }
 }

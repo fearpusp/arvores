@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .modal.show {
+          display: flex !important;
+          justify-content: center;
+        }
+
+        .modal-dialog {
+          align-self: center;
+          max-width: 80vw;
+        }
+
+        .modal-body {
+            overflow-y: auto;
+        }
+
+        .responsive {
+          width: 100%;
+          max-width: 800px;
+          height: auto;
+          max-height: 700px;
+        }
+
+    </style>
     <div class="container sm-4">
         <h4 class="mb-4 text-center">Moderação de Comentários para {{ $arvore->especie->nome_popular }} ({{$arvore->codigo_unico}})</h4>
         <hr>
@@ -50,7 +73,18 @@
                                 <td class="text-center">{{$comentario->comentario}}</td>
                                 <td class="text-center">
                                     @if (count($comentario->fotos) > 0)
-                                        <img src="comentario_foto/{{$comentario->fotos->first()->id}}">{{$comentario->fotos}}</td>
+                                        <img src="comentario_foto/{{$comentario->fotos->first()->id}}" style="width: 5rem;" class="rounded img-thumbnail" data-toggle="modal" data-target="#foto_modal_{{$comentario->fotos->first()->id}}"></td>
+                                        <div class="modal fade" id="foto_modal_{{$comentario->fotos->first()->id}}" tabindex="-1" role="dialog" aria-labelledby="foto_modal_label" aria-hidden="true">
+                                          <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+                                            <div class="modal-content align-items-center">
+                                              <div class="modal-body">
+                                                @if (count($comentario->fotos) > 0)
+                                                    <img class="rounded responsive" src="comentario_foto/{{$comentario->fotos->first()->id}}" style="width: 30rem;">
+                                                @endif
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
                                     @endif
                                 </td>
                                 <td class="text-center">

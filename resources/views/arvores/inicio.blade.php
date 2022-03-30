@@ -1,15 +1,14 @@
 @extends ('layouts.app')
 @section ('content')
     <div class="col-sm-10 container-fluid">
-        <div class="jumbotron">
-            <div class="container">
-                <h1 class="display-4"><span class="align-middle"><img src="{{ asset('logo_fearp_arvore_transparente.png') }}"> ÁRVORES da fea-RP!</span></h1>
-                <hr>
-                <p>O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Sr. Antônio Justino, chefe do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus. O sistema tem o objetivo de apresentar à comunidade as árvores da Faculdade bem como acompanhar seu manejo (ocorrência de podas, análise de risco etc.).</p>
-                <p>Além das cerca de 250 árvores catalogadas no momento da criação do sistema, a Faculdade possui outro conjunto arbóreo não contabilizado, localizado em uma área preservada delimitada pelo Bloco B1, Rua Pedreira de Freitas, Bloco C1 e Cantina.</p>
-                <p>Grupos de árvores de grande porte receberam placas de identificação e um QR Code específico. O usuário poderá escanear o código com seu celular e será direcionado à página da árvore em questão e visualizar as informações dela.</p>
-                <p>No sistema, o usuário poderá acessar diversas informações das plantas da faculdade e interagir, comentando e compartilhando nas redes sociais <i>Facebook</i>, <i>Twitter</i> e <i>LinkedIn</i>. Entre as informações disponíveis estão os nomes popular e científico, porte, localização, foto e histórico de ocorrências.</p>
-            </div>
+        <div class="text-center" style="margin-bottom: 8px">
+            <img src="{{ asset('banner_arvores_982px_258px.jpg') }}" class="img-fluid rounded">
+        </div>
+        <div class="jumbotron" style="padding-top: 22px; padding-bottom: 22px; padding-left: 64px; padding-right: 64px; margin-bottom: 8px;">
+            <p>O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Sr. Antônio Justino, chefe do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus. O sistema tem o objetivo de apresentar à comunidade as árvores da Faculdade bem como acompanhar seu manejo (ocorrência de podas, análise de risco etc.).</p>
+            <p>Além das cerca de 250 árvores catalogadas no momento da criação do sistema, a Faculdade possui outro conjunto arbóreo não contabilizado, localizado em uma área preservada delimitada pelo Bloco B1, Rua Pedreira de Freitas, Bloco C1 e Cantina.</p>
+            <p>Grupos de árvores de grande porte receberam placas de identificação e um QR Code específico. O usuário poderá escanear o código com seu celular e será direcionado à página da árvore em questão e visualizar as informações dela.</p>
+            <p>No sistema, o usuário poderá acessar diversas informações das plantas da faculdade e interagir, comentando e compartilhando nas redes sociais <i>Facebook</i>, <i>Twitter</i> e <i>LinkedIn</i>. Entre as informações disponíveis estão os nomes popular e científico, porte, localização, foto e histórico de ocorrências.</p>
         </div>
         <div class="accordion" id="accordionExample">
           <div class="card">
@@ -57,13 +56,16 @@
                   <b>Catálogo:</b><br>
                   <p>Adriano Apolinário</p>
 
-                  <b>Desenvolvimento do sistema:</b><br>
-                  <p>STI<br>
+                  <b>Desenvolvimento do sistema (STI):</b><br>
+                  <p>
                       Lucas Flóro<br>
                       Kleber Benatti<br>
+                      <b>Banner:</b><br>
+                      Enzo Zanella<br>
                   </p>
                   <b>Logo e Design das placas:</b><br>
-                    Leonardo Rezende (Assistente de Comunicação)
+                  Leonardo Rezende (Assistente de Comunicação)<br>
+
               </div>
             </div>
           </div>

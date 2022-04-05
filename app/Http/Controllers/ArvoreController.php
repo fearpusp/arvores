@@ -46,6 +46,19 @@ class ArvoreController extends Controller
         return view('arvores.index', compact('arvores'));
     }
 
+    public function indexAdmin()
+    {
+        \UspTheme::activeUrl('index-admin');
+
+        $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+            ->with('especie')
+            ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
+            ->get();
+
+        return view('arvores.index-admin', compact('arvores'));
+    }
+
     public function create()
     {
         \UspTheme::activeUrl('create');

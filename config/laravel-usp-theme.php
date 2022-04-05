@@ -14,6 +14,11 @@ $menu = [
         'url' => 'mapa',
     ],
     [
+        'text' => 'Lista completa (ADMINISTRATIVO)',
+        'url' => 'index-admin',
+        'can' => 'admin',
+    ],
+    [
         'text' => 'Nova árvore',
         'url' => 'create',
         'can' => 'admin',

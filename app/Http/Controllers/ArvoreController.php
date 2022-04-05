@@ -20,16 +20,28 @@ class ArvoreController extends Controller
         return view('arvores.inicio');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         \UspTheme::activeUrl('index');
-        $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
-            ->with('especie')
-            ->join('especies', 'especies.id', '=', 'arvores.especie_id')
-            ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
-            //->inRandomOrder()
-            //->paginate(50);
-            ->get();
+
+        $search = $request->input('q');
+        if ($search) {
+            $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+                ->with('especie')
+                ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+                ->where('especies.nome_popular', 'ilike', "%{$search}%")
+                ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%")
+                ->inRandomOrder()
+                ->paginate(50);
+
+            $arvores->append(['q' => $search]);
+        } else {
+            $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+                ->with('especie')
+                ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+                ->inRandomOrder()
+                ->paginate(50);
+        }
 
         return view('arvores.index', compact('arvores'));
     }

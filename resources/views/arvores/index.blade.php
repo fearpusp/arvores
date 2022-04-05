@@ -19,7 +19,9 @@
 
     <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
     <hr>
-        <div class="col-sm-12 container-fluid">
+        <div class="col-2 nav justify-content-end">
+        </div>
+        <div class="col-sm-12 container-fluid justify-content-center">
             <div class="row">
             @foreach ($arvores as $arvore)
                 <div class="col">
@@ -47,8 +49,22 @@
                 </div>
             @endforeach
             </div>
+        </div>
+
+        <hr>
+        <div class="pagination pagination-sm justify-content-center">
+            {{ $arvores->links() }}
+            <div class="col-sm-3 float-right">
+                <form action="" class="form form-inline">
+                <div class="input-group input-group-sm mb-3">
+                    <input type="text" class="form-control" name="q" placeholder="Informe parte dos nomes">
+                    <div class="input-group-append" id="button-addon4">
+                        <input type="submit" class="btn btn-sm btn-outline-primary" value="Buscar"/>
+                    </div>
+                </div>
+                </form>
             </div>
-        </tbody>
+        </div>
 @endsection
 @section('javascripts_bottom')
 @endsection

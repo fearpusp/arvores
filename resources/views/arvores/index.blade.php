@@ -22,38 +22,38 @@
     @can('admin')
         <div>
     @else
-        <div class="col-sm-8 container-fluid">
+        <div class="col-sm-12 container-fluid">
     @endcan
-    <table class="table table-bordered table-sm table-striped" id="todas_arvores" style="width: 100%;">
-        <thead>
-            <tr>
-                <th class="text-center">Código</th>
-                <th class="text-center">Nome popular (<i>Nome científico</i>)</th>
-                <th class="text-center">Porte</th>
-                <th class="text-center">Localização</th>
-                @can('admin')
-                    <th class="text-center">Ocorrências</th>
-                    <th class="text-center">Editar</th>
-                    <th class="text-center">Excluir</th>
-                @endcan
-            </tr>
-        </thead>
-        <tbody>
+            <table id="todas_arvores">
+                <div class="row">
             @foreach ($arvores as $arvore)
-                <tr>
-                    <td class="text-center">{{$arvore->codigo_unico}}</td>
-                    <td class="text-center"><a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info">{{$arvore->especie->nome_popular}} (<i>{{$arvore->especie->nome_cientifico}})</i></a>
+                <div class="col">
+                <div class="card" style="width: 15rem;">
+                    @if (count($arvore->fotos) > 0)
+                        <img src="foto/{{$arvore->fotos->first()->id}}" style="width: 8rem;" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info" style="border: 0;">
+                                {{$arvore->especie->nome_popular}}<br>
+                                (<i>{{$arvore->especie->nome_cientifico}})</i><br>
+                               <small>Código: {{$arvore->codigo_unico}}</small>
+                            </a>
+                        </h5>
+                        <p class="card-text text-center"><small>Porte: <b>{{ ucfirst($arvore->porte) }}</b></small></p>
+                        <p class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
+                                        target="_blank"><i class="fa fa-map-marker-alt"></i>
+                                        {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
+                        </p>
+                   </div>
+                </div>
+                </div>
                     @can('admin')
                         @if ($arvore->comentarios_nao_moderados->count() > 0)
                             <span class="text-center"><a href="{{ route('comentarios.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-success"><small><i class="fas fa-exclamation"></i> Moderação</small></a></span>
                         @endif
                     @endcan
-                    </td>
-                    <td class="text-center">{{ ucfirst($arvore->porte) }}</td>
-                    <td class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
-                                    target="_blank"><i class="fa fa-map-marker-alt"></i>
-                                    {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
-                    </td>
+
                     @can('admin')
                         <td class="text-center"><a href="{{ route('ocorrencias.create', ['arvore' => $arvore]) }}" class="btn btn-sm btn-warning"><i class="fas fa-exclamation"></i> Registrar</a></td>
                         <td class="text-center"><a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn btn-sm btn-secondary"><i class="fas fa-pen"></i></a></td>
@@ -65,8 +65,9 @@
                             </form>
                         </td>
                     @endcan
-                </tr>
             @endforeach
+            </div>
+            </div>
         </tbody>
     </table></div>
 @endsection

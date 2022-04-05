@@ -23,25 +23,27 @@
             <div class="row">
             @foreach ($arvores as $arvore)
                 <div class="col">
-                <div class="card" style="width: 18rem;">
-                    @if (count($arvore->fotos) > 0)
-                        <img src="foto/{{$arvore->fotos->first()->id}}" style="width: 8rem;" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info" style="border: 0;">
-                                <b>{{$arvore->especie->nome_popular}}</b><br>
-                                <small>(<i>{{$arvore->especie->nome_cientifico}})</i><br>
-                                Código: {{$arvore->codigo_unico}}
-                                <p class="card-text text-center">Porte: {{ ucfirst($arvore->porte) }}</small></p>
+                    <div class="card" style="width: 16rem; margin-bottom: 5px; margin-left: 2px; margin-right: 2px;">
+                        @if (count($arvore->fotos) > 0)
+                            <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}">
+                                <img src="{{ asset('img/' . $arvore->fotos->first()->id . '.jpg') }}" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}" style="margin-top: 5px; margin-bottom: 5px">
                             </a>
-                        </h5>
-                        <p class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
-                                        target="_blank"><i class="fa fa-map-marker-alt"></i>
-                                        {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
-                        </p>
-                   </div>
-                </div>
+                        @endif
+                        <div class="card-body" style="padding: 0;">
+                            <h5 class="card-title text-center">
+                                <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info" style="border: 0;">
+                                    <b>{{$arvore->especie->nome_popular}}</b><br>
+                                    <small>(<i>{{$arvore->especie->nome_cientifico}})</i><br>
+                                    Código: {{$arvore->codigo_unico}}
+                                    <p class="card-text text-center">Porte: {{ ucfirst($arvore->porte) }}</small></p>
+                                </a>
+                            </h5>
+                            <p class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
+                                            target="_blank"><i class="fa fa-map-marker-alt"></i>
+                                            {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
+                            </p>
+                       </div>
+                    </div>
                 </div>
             @endforeach
             </div>

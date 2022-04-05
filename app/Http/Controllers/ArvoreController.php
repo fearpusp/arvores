@@ -26,10 +26,10 @@ class ArvoreController extends Controller
         $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
-            //->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
-            ->inRandomOrder()
-            ->paginate(50);
-        //->get();
+            ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
+            //->inRandomOrder()
+            //->paginate(50);
+            ->get();
 
         return view('arvores.index', compact('arvores'));
     }

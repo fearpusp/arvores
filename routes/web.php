@@ -8,6 +8,7 @@ use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
 use App\Http\Controllers\PlacaController;
+use App\Models\Foto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,3 +57,5 @@ Route::get('/mapa', function () {
 })->name('arvores.mapa');
 
 Route::resource('comentario_foto', ComentarioFotoController::class);
+
+Route::get('resize/', [FotoController::class, 'resize'])->name('fotos.resize')->middleware('can:admin');

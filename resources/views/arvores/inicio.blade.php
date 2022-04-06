@@ -55,6 +55,7 @@
               <div class="card-body">
                   <b>Catálogo:</b><br>
                   <p>Adriano Apolinário</p>
+                  <p>Antônio Justino da Silva</p>
 
                   <b>Desenvolvimento do sistema (STI):</b><br>
                   <p>

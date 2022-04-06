@@ -140,51 +140,46 @@
                         @endauth
                     </h5>
                 </div>
-                    <div class="row">
-                    @php $contador = 1; @endphp
                     @foreach ($comentarios as $comentario)
-                        <div class="col-sm-4">
-                            <div class="card" style="width: 16rem;">
-                            @if (count($comentario->fotos) > 0)
-                                  <img src="comentario_foto/{{$comentario->fotos->first()->id}}" class="card-img-top rounded" data-toggle="modal" width data-target="#foto_modal_{{$comentario->fotos->first()->id}}"></td>
-                                  <div class="card-body">
-                                    <p class="card-text">{{ $comentario->comentario }}</p>
-                                  </div>
-                                    <div class="card-footer">
-                                        <h6 class="card-subtitle mb-2 text-muted"><small>({{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }} por {{ $comentario->user->name }})</small></h6>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                @if (count($comentario->fotos) > 0)
+                                    <div class="row">
+                                        <div class="col-sm-3" style="padding-right: 0px;">
+                                            <img src="comentario_foto/{{$comentario->fotos->first()->id}}" class="img-thumbnail rounded" data-toggle="modal" width data-target="#foto_modal_{{$comentario->fotos->first()->id}}"></td>
+                                        </div>
+                                        <div class="col-sm-9" style="padding-left: 0px;">
+                                          <div class="card-body" style="padding: 10px;">
+                                            <h6 class="card-subtitle mb-2 text-muted"><small>{{ $comentario->user->name }} em {{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</small></h6>
+                                            <hr style="margin: 2px;">
+                                            <p class="card-text">{{ $comentario->comentario }}</p>
+                                          </div>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="modal fade" id="foto_modal_{{$comentario->fotos->first()->id}}" tabindex="-1" role="dialog" aria-labelledby="foto_modal_label" aria-hidden="true">
-                                  <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
-                                    <div class="modal-content align-items-center">
-                                      <div class="modal-body">
-                                        @if (count($comentario->fotos) > 0)
-                                            <img class="rounded responsive" src="comentario_foto/{{$comentario->fotos->first()->id}}" style="width: 30rem;">
-                                        @endif
+                                    <div class="modal fade" id="foto_modal_{{$comentario->fotos->first()->id}}" tabindex="-1" role="dialog" aria-labelledby="foto_modal_label" aria-hidden="true">
+                                      <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+                                        <div class="modal-content align-items-center">
+                                          <div class="modal-body">
+                                            @if (count($comentario->fotos) > 0)
+                                                <img class="rounded responsive" src="comentario_foto/{{$comentario->fotos->first()->id}}" style="width: 30rem;">
+                                            @endif
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                            @else
-                                  <div class="card-body">
-                                    <p class="card-text">{{ $comentario->comentario }}</p>
-                                  </div>
-                                    <div class="card-footer">
-                                        <h6 class="card-subtitle mb-2 text-muted"><small>({{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }} por {{ $comentario->user->name }})</small></h6>
+                                @else
+                                      <div class="card-body" style="padding: 10px;">
+                                        <h6 class="card-subtitle mb-2 text-muted"><small>{{ $comentario->user->name }} em {{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</small></h6>
+                                        <hr style="margin-top: 2px; margin-bottom: 5px">
+                                        <p class="card-text">{{ $comentario->comentario }}</p>
+                                      </div>
                                     </div>
-                                </div>
-
-                            @endif
-                    </div>
-                        @if (($contador % 3) == 0)
-                    </div>
-                    <br>
-                    <div class="row">
-                        @endif
-                        @php $contador++; @endphp
-                        @endforeach
-                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
             </div>
         </div>
         <div class="container text-center">

@@ -108,6 +108,13 @@ class ArvoreController extends Controller
         $foto->path = $request->file('foto')->store('./fotos');
         $foto->save();
 
+        /* fazer resie (fit) da foto e salvar na pasta public */
+        $file = explode('/', $foto->path);
+        $file = $file[2];
+        $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
+        $img_resize->fit(200);
+        $img_resize->save(public_path("img/{$foto->id}.jpg"));
+
         return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Árvore cadastrada com sucesso!']);
     }
 
@@ -174,6 +181,13 @@ class ArvoreController extends Controller
             $foto->original_name = $request->file('foto')->getClientOriginalName();
             $foto->path = $request->file('foto')->store('./fotos');
             $foto->save();
+
+            /* fazer resie (fit) da foto e salvar na pasta public */
+            $file = explode('/', $foto->path);
+            $file = $file[2];
+            $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
+            $img_resize->fit(200);
+            $img_resize->save(public_path("img/{$foto->id}.jpg"));
         }
 
         return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Árvore atualizada com sucesso!']);

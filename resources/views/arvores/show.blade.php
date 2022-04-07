@@ -146,10 +146,10 @@
                                 <div class="card">
                                 @if (count($comentario->fotos) > 0)
                                     <div class="row">
-                                        <div class="col-sm-3" style="padding-right: 0px;">
-                                            <img src="comentario_foto/{{$comentario->fotos->first()->id}}" class="img-thumbnail rounded" data-toggle="modal" width data-target="#foto_modal_{{$comentario->fotos->first()->id}}"></td>
+                                        <div class="col-sm-2" style="padding-right: 0px;">
+                                            <img src="{{ asset('img/comentarios/' . $comentario->fotos->first()->id . '.jpg') }}" class="img-thumbnail rounded" data-toggle="modal" width data-target="#foto_modal_{{$comentario->fotos->first()->id}}"></td>
                                         </div>
-                                        <div class="col-sm-9" style="padding-left: 0px;">
+                                        <div class="col-sm-10" style="padding-left: 0px;">
                                           <div class="card-body" style="padding: 10px;">
                                             <h6 class="card-subtitle mb-2 text-muted"><small>{{ $comentario->user->name }} em {{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</small></h6>
                                             <hr style="margin: 2px;">

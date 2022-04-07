@@ -83,7 +83,7 @@
                 <div class="col-3">
                     <label for="imagem" class="control-label">Foto cadastrada</label>
                     @if (count($arvore->fotos) > 0)
-                        <img name="imagem" src="foto/{{ $arvore->fotos->first()->id }}" width="100px">
+                        <img name="imagem" src="foto/{{ $arvore->fotos->first()->id }}" width="100px" class="rounded">
                         <input type="hidden" name="foto_anterior_id" value="{{ $arvore->fotos->first()->id }}">
                         <br><br>
                     @else

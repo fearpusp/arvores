@@ -65,6 +65,14 @@ class ComentarioController extends Controller
                 $comentario = Comentario::find($id);
                 if ($aprovado == "sim") {
                     $comentario->publicar = true;
+                    if (count($comentario->fotos) > 0) {
+                        /* fazer resie (fit) da foto e salvar na pasta public */
+                        $file = explode('/', $comentario->fotos->first()->path);
+                        $file = $file[2];
+                        $img_resize = \Image::make(storage_path("app/comentario_fotos/{$file}"));
+                        $img_resize->fit(150);
+                        $img_resize->save(public_path("img/comentarios/{$comentario->fotos->first()->id}.jpg"));
+                    }
                 } else if ($aprovado == "nao") {
                     $comentario->publicar = false;
                 }

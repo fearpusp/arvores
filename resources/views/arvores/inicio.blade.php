@@ -24,7 +24,7 @@
                   A navegação é feita pelos itens da barra superior: <br><br>
                 <ul>
                     <li><a href="{{ route('arvores.index') }}"><i>Listagem completa</a></i> exibe todas as árvores catalogadas. A partir dessa lista é possível acessar a página de cada árvore</li>
-                    <li><i><a href="{{ route('arvores.mapa') }}">Mapa com todas árvores</a></i> exibe um mapa do google com as marcações de localização das árvores</li>
+                    <li><i><a href="{{ route('arvores.mapa') }}">Mapa com todas as árvores</a></i> exibe um mapa do google com as marcações de localização das árvores</li>
                 </ul>
               </div>
             </div>

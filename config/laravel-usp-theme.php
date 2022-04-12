@@ -10,7 +10,7 @@ $menu = [
         'url' => 'index',
     ],
     [
-        'text' => 'Mapa com todas árvores',
+        'text' => 'Mapa com todas as árvores',
         'url' => 'mapa',
     ],
     [

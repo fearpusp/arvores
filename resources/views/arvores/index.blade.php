@@ -19,13 +19,11 @@
 
     <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
     <hr>
-        <div class="col-2 nav justify-content-end">
-        </div>
         <div class="col-sm-12 container-fluid justify-content-center">
             <div class="row">
             @foreach ($arvores as $arvore)
-                <div class="col">
-                    <div class="card" style="width: 16rem; margin-bottom: 5px; margin-left: 2px; margin-right: 2px;">
+                <div class="col-sm">
+                    <div class="card" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px;">
                         @if (count($arvore->fotos) > 0)
                             <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}">
                                 <img src="{{ asset('img/' . $arvore->fotos->first()->id . '.jpg') }}" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}" style="margin-top: 5px; margin-bottom: 5px">

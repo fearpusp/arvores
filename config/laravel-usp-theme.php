@@ -3,12 +3,12 @@
 $admin = [
     [
         'text' => 'Gerar csv todas árvores',
-        'url' => '',
+        'url' => 'gerar-csv-completo',
         'can' => 'admin',
     ],
     [
         'text' => 'Gerar csv árvores concurso',
-        'url' => '',
+        'url' => 'gerar-csv-concurso',
         'can' => 'admin',
     ],
 ];
@@ -64,7 +64,9 @@ $menu = [
     [
         'text' => 'Admin',
         'submenu' => $admin,
-    ],    [
+        'can' => 'admin',
+    ],
+    [
         # este item de menu será substituido no momento da renderização
         'key' => 'menu_dinamico',
     ],

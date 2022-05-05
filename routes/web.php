@@ -8,7 +8,6 @@ use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
 use App\Http\Controllers\PlacaController;
-use App\Models\Foto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,3 +66,6 @@ Route::get('/mapa_concurso', function () {
     \UspTheme::activeUrl('mapa_concurso');
     return view('arvores.mapa');
 })->name('arvores.mapa');
+
+Route::get('gerar-csv-completo', [ArvoreController::class, 'gerarCsvCompleto'])->name('gerar-csv-completo')->middleware('can:admin');
+Route::get('gerar-csv-concurso', [ArvoreController::class, 'gerarCsvConcurso'])->name('gerar-csv-concurso')->middleware('can:admin');

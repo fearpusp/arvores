@@ -9,6 +9,7 @@ use App\Models\Especie;
 use App\Models\Foto;
 use App\Models\Ocorrencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -237,5 +238,86 @@ class ArvoreController extends Controller
         }
 
         return view('arvores.concurso', compact('arvores'));
+    }
+
+    public function gerarCsvCompleto()
+    {
+        $arvores = Arvore::select(DB::raw(" concat(especies.nome_popular, ' (', especies.nome_cientifico , ')', ' cod. ', arvores.codigo_unico) as Nome, latitude, longitude"))
+            ->with('especie')
+            ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->get();
+
+        $arquivo = "arvores_" . date('Y-m-d') . ".csv";
+        $separador = ",";
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$arquivo",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $colunas = array('Nome', 'Latitude', 'Longitude');
+        $callback = function () use ($arvores, $colunas, $separador) {
+            // Create a file pointer
+            $f = fopen('php://memory', 'w');
+            fputcsv($f, $colunas, $separador);
+
+            foreach ($arvores as $arvore) {
+                $linha = array($arvore->nome, $arvore->latitude, $arvore->longitude);
+                fputcsv($f, $linha, $separador);
+            }
+
+            // Move back to beginning of file
+            fseek($f, 0);
+
+            //output all remaining data on a file pointer
+            fpassthru($f);
+            fclose($f);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+    public function gerarCsvConcurso()
+    {
+        $arvores = Arvore::select(DB::raw(" concat(especies.nome_popular, ' (', especies.nome_cientifico , ')', ' cod. ', arvores.codigo_unico) as Nome, latitude, longitude"))
+            ->with('especie')
+            ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->where('flag_concurso', true)
+            ->get();
+
+        $arquivo = "arvores_concurso_" . date('Y-m-d') . ".csv";
+        $separador = ",";
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$arquivo",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $colunas = array('Nome', 'Latitude', 'Longitude');
+        $callback = function () use ($arvores, $colunas, $separador) {
+            // Create a file pointer
+            $f = fopen('php://memory', 'w');
+            fputcsv($f, $colunas, $separador);
+
+            foreach ($arvores as $arvore) {
+                $linha = array($arvore->nome, $arvore->latitude, $arvore->longitude);
+                fputcsv($f, $linha, $separador);
+            }
+
+            // Move back to beginning of file
+            fseek($f, 0);
+
+            //output all remaining data on a file pointer
+            fpassthru($f);
+            fclose($f);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
 }

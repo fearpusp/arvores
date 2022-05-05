@@ -89,6 +89,12 @@
                     @else
                         <p class="text-center">Sem foto</p>
                     @endif
+                    <label for="foto" class="control-label">Flag Concurso</label>
+                    @if ($arvore->flag_concurso == true)
+                    <input type="checkbox" name="flag_concurso" checked>
+                    @else
+                    <input type="checkbox" name="flag_concurso">
+                    @endif
                 </div>
             </div>
             <br>

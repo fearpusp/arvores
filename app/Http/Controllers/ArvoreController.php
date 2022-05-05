@@ -212,4 +212,30 @@ class ArvoreController extends Controller
 
         return back()->with(['success' => 'Árvores excluída com sucesso!']);
     }
+
+    public function concurso(Request $request)
+    {
+        \UspTheme::activeUrl('concurso');
+
+        $search = $request->input('q');
+        if ($search) {
+            $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+                ->with('especie')
+                ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+                ->where('flag_concurso', true)
+                ->where('especies.nome_popular', 'ilike', "%{$search}%")
+                ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%")
+                ->paginate(50);
+
+            $arvores->append(['q' => $search]);
+        } else {
+            $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+                ->with('especie')
+                ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+                ->where('flag_concurso', true)
+                ->paginate(50);
+        }
+
+        return view('arvores.concurso', compact('arvores'));
+    }
 }

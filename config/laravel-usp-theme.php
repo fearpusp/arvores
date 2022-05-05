@@ -1,5 +1,29 @@
 <?php
 
+$admin = [
+    [
+        'text' => 'Gerar csv todas árvores',
+        'url' => '',
+        'can' => 'admin',
+    ],
+    [
+        'text' => 'Gerar csv árvores concurso',
+        'url' => '',
+        'can' => 'admin',
+    ],
+];
+
+$menu_concurso = [
+    [
+        'text' => 'Árvores do concurso',
+        'url' => 'concurso',
+    ],
+    [
+        'text' => 'Mapa com as árvores do concurso',
+        'url' => 'mapa_concurso',
+    ],
+];
+
 $menu = [
     [
         'text' => '<i class="fas fa-home"></i> Início',
@@ -12,6 +36,10 @@ $menu = [
     [
         'text' => 'Mapa com todas as árvores',
         'url' => 'mapa',
+    ],
+    [
+        'text' => 'Concurso',
+        'submenu' => $menu_concurso,
     ],
     [
         'text' => 'Lista completa (ADMINISTRATIVO)',
@@ -34,10 +62,14 @@ $menu = [
         'can' => 'admin',
     ],
     [
+        'text' => 'Admin',
+        'submenu' => $admin,
+    ],    [
         # este item de menu será substituido no momento da renderização
         'key' => 'menu_dinamico',
     ],
 ];
+
 
 $right_menu = [
     [

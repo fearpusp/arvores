@@ -60,3 +60,10 @@ Route::get('/mapa', function () {
 Route::resource('comentario_foto', ComentarioFotoController::class);
 
 Route::get('resize/', [FotoController::class, 'resize'])->name('fotos.resize')->middleware('can:admin');
+
+Route::get('concurso/', [ArvoreController::class, 'concurso'])->name('concurso');
+
+Route::get('/mapa_concurso', function () {
+    \UspTheme::activeUrl('mapa_concurso');
+    return view('arvores.mapa');
+})->name('arvores.mapa');

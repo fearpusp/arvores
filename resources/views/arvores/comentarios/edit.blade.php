@@ -69,7 +69,7 @@
                         @foreach ($comentarios as $comentario)
                             <tr>
                                 <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</td>
-                                <td class="text-center">{{$comentario->user->name}}</td>
+                                <td class="text-center">{{$comentario->user->name}} ({{ $comentario->user->codpes }})</td>
                                 <td class="text-center">{{$comentario->comentario}}</td>
                                 <td class="text-center">
                                     @if (count($comentario->fotos) > 0)

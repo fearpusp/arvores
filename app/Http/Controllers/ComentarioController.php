@@ -19,14 +19,14 @@ class ComentarioController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'required' => 'Seu comentário" deve estar preenchido.',
+            'required' => 'Seu comentário deve estar preenchido.',
             'min' => 'Seu comentário deve conter mais de 5 caracteres.',
         ];
 
         // Componente responsável pela validação
         $validator = Validator::make($request->all(), [
             'comentario' => 'required|min:5',
-            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'file|image|mimes:jpeg,png,jpg|max:24000000',
         ], $messages);
 
         // Validação

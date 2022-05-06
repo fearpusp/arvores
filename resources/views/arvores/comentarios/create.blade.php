@@ -34,7 +34,7 @@
                             <br>
                             <div class="form-row">
                                 <div class="col text-center">
-                                    <label for="foto" class="control-label">Foto/imagem <small>(até 2MB)</small></label>
+                                    <label for="foto" class="control-label">Foto/imagem <small>(até 20MB)</small></label>
                                     <input type="file" name="foto" accept="image/png, image/jpeg, image/jpg">
                                 </div>
                             </div>

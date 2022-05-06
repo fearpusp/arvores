@@ -166,6 +166,11 @@ class ArvoreController extends Controller
         $arvore->porte = $request->porte;
         $arvore->latitude = $request->latitude;
         $arvore->longitude = $request->longitude;
+        if (isset($request->flag_concurso) && ($request->flag_concurso == true)) {
+            $arvore->flag_concurso = true;
+        } else {
+            $arvore->flag_concurso = false;
+        }
         $arvore->save();
 
         // Caso já tenha foto cadastrada e seja enviada nova, apaga a anterior

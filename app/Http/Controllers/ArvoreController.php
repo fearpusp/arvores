@@ -226,6 +226,7 @@ class ArvoreController extends Controller
                 ->where('flag_concurso', true)
                 ->where('especies.nome_popular', 'ilike', "%{$search}%")
                 ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%")
+                ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
 
             $arvores->append(['q' => $search]);
@@ -234,6 +235,7 @@ class ArvoreController extends Controller
                 ->with('especie')
                 ->join('especies', 'especies.id', '=', 'arvores.especie_id')
                 ->where('flag_concurso', true)
+                ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
         }
 
@@ -242,8 +244,7 @@ class ArvoreController extends Controller
 
     public function gerarCsvCompleto()
     {
-        $arvores = Arvore::select(DB::raw(" concat(especies.nome_popular, ' (', especies.nome_cientifico , ')', ' cod. ', arvores.codigo_unico) as Nome, latitude, longitude"))
-            ->with('especie')
+        $arvores = Arvore::select('especies.nome_popular', 'especies.nome_cientifico', 'latitude', 'longitude', 'codigo_unico')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
             ->get();
 
@@ -258,14 +259,15 @@ class ArvoreController extends Controller
             "Expires"             => "0"
         );
 
-        $colunas = array('Nome', 'Latitude', 'Longitude');
+        $colunas = array('Nome Popular', 'Nome Científico',  'Código', 'Página', 'Latitude', 'Longitude');
         $callback = function () use ($arvores, $colunas, $separador) {
             // Create a file pointer
             $f = fopen('php://memory', 'w');
             fputcsv($f, $colunas, $separador);
 
             foreach ($arvores as $arvore) {
-                $linha = array($arvore->nome, $arvore->latitude, $arvore->longitude);
+                $url = "https://arvores.fearp.usp.br/show/{$arvore->codigo_unico}";
+                $linha = array($arvore->nome_popular, $arvore->nome_cientifico, $arvore->codigo_unico, $url, $arvore->latitude, $arvore->longitude);
                 fputcsv($f, $linha, $separador);
             }
 
@@ -282,8 +284,7 @@ class ArvoreController extends Controller
 
     public function gerarCsvConcurso()
     {
-        $arvores = Arvore::select(DB::raw(" concat(especies.nome_popular, ' (', especies.nome_cientifico , ')', ' cod. ', arvores.codigo_unico) as Nome, latitude, longitude"))
-            ->with('especie')
+        $arvores = Arvore::select('especies.nome_popular', 'especies.nome_cientifico', 'latitude', 'longitude', 'codigo_unico')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
             ->where('flag_concurso', true)
             ->get();
@@ -299,14 +300,15 @@ class ArvoreController extends Controller
             "Expires"             => "0"
         );
 
-        $colunas = array('Nome', 'Latitude', 'Longitude');
+        $colunas = array('Nome Popular', 'Nome Científico',  'Código', 'Página', 'Latitude', 'Longitude');
         $callback = function () use ($arvores, $colunas, $separador) {
             // Create a file pointer
             $f = fopen('php://memory', 'w');
             fputcsv($f, $colunas, $separador);
 
             foreach ($arvores as $arvore) {
-                $linha = array($arvore->nome, $arvore->latitude, $arvore->longitude);
+                $url = "https://arvores.fearp.usp.br/show/{$arvore->codigo_unico}";
+                $linha = array($arvore->nome_popular, $arvore->nome_cientifico, $arvore->codigo_unico, $url, $arvore->latitude, $arvore->longitude);
                 fputcsv($f, $linha, $separador);
             }
 

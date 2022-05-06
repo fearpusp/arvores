@@ -4,7 +4,7 @@
     <hr>
     <div class="col-sm-10 container-fluid">
         <div class="container text-center">
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1xJC7kpcJLsrVWYeJHinKrO_Eet2l-h2H&ehbc=2E312F" width="640" height="540"></iframe>
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qnOI1Nhw0g-i1gF7GF9FgXMyerW-rimR&ehbc=2E312F" width="640" height="540"></iframe>
         </div>
     </div>
 @endsection

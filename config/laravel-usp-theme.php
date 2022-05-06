@@ -40,6 +40,7 @@ $menu = [
     [
         'text' => 'Concurso',
         'submenu' => $menu_concurso,
+        'can' => 'admin',
     ],
     [
         'text' => 'Lista completa (ADMINISTRATIVO)',

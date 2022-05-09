@@ -15,8 +15,12 @@ $admin = [
 
 $menu_concurso = [
     [
-        'text' => 'Árvores do concurso',
+        'text' => 'Apresentação',
         'url' => 'concurso',
+    ],
+    [
+        'text' => 'Árvores do concurso',
+        'url' => 'lista_concurso',
     ],
     [
         'text' => 'Mapa com as árvores do concurso',

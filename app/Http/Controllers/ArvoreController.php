@@ -219,9 +219,15 @@ class ArvoreController extends Controller
         return back()->with(['success' => 'Árvores excluída com sucesso!']);
     }
 
-    public function concurso(Request $request)
+    public function concurso()
     {
         \UspTheme::activeUrl('concurso');
+        return view('arvores.concurso');
+    }
+
+    public function listaConcurso(Request $request)
+    {
+        \UspTheme::activeUrl('lista_concurso');
 
         $search = $request->input('q');
         if ($search) {
@@ -244,7 +250,7 @@ class ArvoreController extends Controller
                 ->paginate(50);
         }
 
-        return view('arvores.concurso', compact('arvores'));
+        return view('arvores.lista_concurso', compact('arvores'));
     }
 
     public function gerarCsvCompleto()

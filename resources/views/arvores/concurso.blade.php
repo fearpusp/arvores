@@ -17,52 +17,20 @@
     </div>
     @endif
 
-    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Árvores do Concurso </h4>
+    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Concurso de Fotos </h4>
     <hr>
-        <div class="col-sm-12 container-fluid justify-content-center">
-            <div class="row">
-            @foreach ($arvores as $arvore)
-                <div class="col-sm">
-                    <div class="card" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px;">
-                        @if (count($arvore->fotos) > 0)
-                            <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}">
-                                <img src="{{ asset('img/' . $arvore->fotos->first()->id . '.jpg') }}" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}" style="margin-top: 5px; margin-bottom: 5px">
-                            </a>
-                        @endif
-                        <div class="card-body" style="padding: 0;">
-                            <h5 class="card-title text-center">
-                                <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}" class="btn btn-md btn-outline-info" style="border: 0;">
-                                    <b>{{$arvore->especie->nome_popular}}</b><br>
-                                    <small>(<i>{{$arvore->especie->nome_cientifico}})</i><br>
-                                    Código: {{$arvore->codigo_unico}}
-                                    <p class="card-text text-center">Porte: {{ ucfirst($arvore->porte) }}</small></p>
-                                </a>
-                            </h5>
-                            <p class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"
-                                            target="_blank"><i class="fa fa-map-marker-alt"></i>
-                                            {{$arvore->latitude}}, {{$arvore->longitude}}</a></small>
-                            </p>
-                       </div>
-                    </div>
-                </div>
-            @endforeach
-            </div>
+    <div class="col-sm-8 container-fluid justify-content-center">
+        <div class="text-center">
+            <p>Veja os principais itens no Edital deste concurso!</p>
         </div>
-
-        <hr>
-        <div class="pagination pagination-sm justify-content-center">
-            {{ $arvores->links() }}
-            <div class="col-sm-3 float-right">
-                <form action="" class="form form-inline">
-                <div class="input-group input-group-sm mb-3">
-                    <input type="text" class="form-control" name="q" placeholder="Informe parte dos nomes">
-                    <div class="input-group-append" id="button-addon4">
-                        <input type="submit" class="btn btn-sm btn-outline-primary" value="Buscar"/>
-                    </div>
-                </div>
-                </form>
-            </div>
+        <div class="text-left">
+            <p>Acesse os links abaixo:</p>
+            <ul>
+                <li><a href="{{ route('lista_concurso') }}">Lista com árvores participantes</a></li>
+                <li><a href="{{ route('arvores.mapa_concurso') }}">Mapa no Google coma as árvores participantes</a></li>
+            </ul>
         </div>
+    </div>
 @endsection
 @section('javascripts_bottom')
 @endsection

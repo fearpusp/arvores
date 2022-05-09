@@ -60,6 +60,7 @@
     <h4 class="text-center">{{ $arvore->especie->nome_popular }}
         @can('admin')
             <small>&nbsp;<a href="{{ route('arvores.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-secondary"><i class="fas fa-pen"></i> Editar árvore</a></small>
+            <small class="text-center"><a href="{{ route('comentarios.edit', ['arvore' => $arvore]) }}" class="btn-sm btn-success"> Acessar Moderação</a></small>
         @endcan
     </h4>
     <hr>
@@ -179,6 +180,7 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
                     @endforeach
             </div>
         </div>

@@ -26,6 +26,10 @@ $menu_concurso = [
         'text' => 'Mapa com as árvores do concurso',
         'url' => 'mapa_concurso',
     ],
+    [
+        'text' => 'Edital em PDF',
+        'url' => asset('edital_concurso_fotografia_2022.pdf'),
+    ],
 ];
 
 $menu = [

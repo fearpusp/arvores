@@ -62,9 +62,9 @@
                 </div>
                 </form>
             </div>
-            <div class="col-sm-3 text-center">
-                <label class="form-control">Exibindo {{ $arvores->count() }} árvores do <b>total</b> de <b>{{ $arvores->total() }}</b></label>
-            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <label style="border: 1px solid; padding: 0.25rem 0.5rem; font-size: .875rem; line-height: 1.5; border-radius: 0.2rem">Exibindo {{ $arvores->count() }} árvores do <b>total</b> de <b>{{ $arvores->total() }}</b></label>
         </div>
 @endsection
 @section('javascripts_bottom')

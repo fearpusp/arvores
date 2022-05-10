@@ -52,7 +52,7 @@
         <hr>
         <div class="pagination pagination-sm justify-content-center">
             {{ $arvores->links() }}
-            <div class="col-sm-3 float-right">
+            <div class="col-sm-2 float-right">
                 <form action="" class="form form-inline">
                 <div class="input-group input-group-sm mb-3">
                     <input type="text" class="form-control" name="q" placeholder="Informe parte dos nomes">
@@ -61,6 +61,9 @@
                     </div>
                 </div>
                 </form>
+            </div>
+            <div class="col-sm-3 text-center">
+                <label class="form-control">Exibindo {{ $arvores->count() }} árvores do <b>total</b> de <b>{{ $arvores->total() }}</b></label>
             </div>
         </div>
 @endsection

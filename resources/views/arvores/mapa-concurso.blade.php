@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section ('content')
-    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
+    <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Mapa das árvores do concurso </h4>
     <hr>
     <div class="col-sm-10 container-fluid">
         <div class="container text-center">

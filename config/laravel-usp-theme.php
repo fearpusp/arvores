@@ -28,7 +28,7 @@ $menu_concurso = [
     ],
     [
         'text' => 'Edital em PDF',
-        'url' => asset('edital_concurso_fotografia_2022.pdf'),
+        'url' => 'edital_concurso_fotografia_2022.pdf',
     ],
 ];
 

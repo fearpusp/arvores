@@ -18,7 +18,19 @@
     @endif
 
     <h4 class="mb-4 text-center"><img src="{{ asset('logo_fearp_arvore.png') }}"> Catálogo de árvores da FEA-RP </h4>
-    <hr>
+        <hr>
+        <div class="pagination pagination-sm justify-content-center">
+            <div class="col-sm-2 float-right">
+                <form action="" class="form form-inline">
+                <div class="input-group input-group-sm mb-3">
+                    <input type="text" class="form-control" name="q" placeholder="Informe parte dos nomes">
+                    <div class="input-group-append" id="button-addon4">
+                        <input type="submit" class="btn btn-sm btn-outline-primary" value="Buscar"/>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
         <div class="col-sm-12 container-fluid justify-content-center">
             <div class="row">
             @foreach ($arvores as $arvore)

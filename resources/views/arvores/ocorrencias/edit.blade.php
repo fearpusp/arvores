@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-2">
                     <label for="data_hora" class="control-label">Data</label>
-                    <input name="data_hora" id="data_hora" class="form-control text-center" value="{{ Carbon\Carbon::parse(now())->format('d/m/Y') }}"/>
+                    <input name="data_hora" id="data_hora" class="form-control text-center" value="{{ Carbon\Carbon::parse($ocorrencia->data_hora)->format('d/m/Y') }}"/>
                 </div>
                 <div class="col-6">
                     <label for="tipo_ocorrencia" class="control-label">Tipo</label>

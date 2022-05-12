@@ -235,8 +235,10 @@ class ArvoreController extends Controller
                 ->with('especie')
                 ->join('especies', 'especies.id', '=', 'arvores.especie_id')
                 ->where('flag_concurso', true)
-                ->where('especies.nome_popular', 'ilike', "%{$search}%")
-                ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%")
+                ->where(function ($query) use ($search) {
+                    $query->orWhere('especies.nome_popular', 'ilike', "%{$search}%")
+                        ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%");
+                })
                 ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
 

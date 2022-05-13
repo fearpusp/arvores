@@ -38,7 +38,7 @@
                     <div class="card" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px;">
                         @if (count($arvore->fotos) > 0)
                             <a href="{{ route('arvores.show', ['arvore' => $arvore->codigo_unico]) }}">
-                                <img src="{{ asset('img/' . $arvore->fotos->first()->id . '.jpg') }}" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}" style="margin-top: 5px; margin-bottom: 5px">
+                                <img src="{{ asset('img/' . $arvore->fotos->first()->arvore_id . '.jpg') }}" class="rounded mx-auto d-block" alt="{{ $arvore->especie->nome_popular }}" style="margin-top: 5px; margin-bottom: 5px">
                             </a>
                         @endif
                         <div class="card-body" style="padding: 0;">

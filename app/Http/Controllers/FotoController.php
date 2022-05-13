@@ -23,9 +23,11 @@ class FotoController extends Controller
         foreach ($fotos as $foto) {
             $file = explode('/', $foto->path);
             $file = $file[2];
-            $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
-            $img_resize->fit(200);
-            $img_resize->save(public_path("img/{$foto->id}.jpg"));
+            if (file_exists(storage_path("app/fotos/{$file}"))) {
+                $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
+                $img_resize->fit(200);
+                $img_resize->save(public_path("img/{$foto->id}.jpg"));
+            }
         }
 
         return redirect()->route('arvores.index');

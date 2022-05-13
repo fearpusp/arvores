@@ -26,7 +26,7 @@ class FotoController extends Controller
             if (file_exists(storage_path("app/fotos/{$file}"))) {
                 $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
                 $img_resize->fit(200);
-                $img_resize->save(public_path("img/{$foto->id}.jpg"));
+                $img_resize->save(public_path("img/{$foto->arvore_id}.jpg"));
             }
         }
 

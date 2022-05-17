@@ -2,7 +2,7 @@
 @section ('content')
     <div class="col-sm-10 container-fluid" style="max-width: 1100px;">
         <div class="text-center" style="margin-bottom: 8px">
-            <img src="{{ asset('banner_arvores_1100px.jpg') }}" class="img-fluid rounded">
+            <a href="{{ route('concurso') }}"><img src="{{ asset('banner_concurso_fotos.jpg') }}" class="img-fluid rounded"></a>
         </div>
         <div class="jumbotron" style="padding-top: 22px; padding-bottom: 22px; padding-left: 64px; padding-right: 64px; margin-bottom: 8px;">
             <p class="mb-2">O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Sr. Antônio Justino, chefe do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus. O sistema tem o objetivo de apresentar à comunidade as árvores da Faculdade bem como acompanhar seu manejo (ocorrência de podas, análise de risco etc.).</p>

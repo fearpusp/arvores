@@ -9,7 +9,6 @@ use App\Models\Especie;
 use App\Models\Foto;
 use App\Models\Ocorrencia;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,7 +31,7 @@ class ArvoreController extends Controller
                 ->join('especies', 'especies.id', '=', 'arvores.especie_id')
                 ->where('especies.nome_popular', 'ilike', "%{$search}%")
                 ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%")
-                ->inRandomOrder()
+                ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
 
             $arvores->append(['q' => $search]);
@@ -40,7 +39,7 @@ class ArvoreController extends Controller
             $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
                 ->with('especie')
                 ->join('especies', 'especies.id', '=', 'arvores.especie_id')
-                ->inRandomOrder()
+                ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
         }
 

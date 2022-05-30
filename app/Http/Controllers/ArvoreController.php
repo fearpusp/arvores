@@ -113,7 +113,7 @@ class ArvoreController extends Controller
         $file = $file[2];
         $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
         $img_resize->fit(200);
-        $img_resize->save(public_path("img/{$foto->id}.jpg"));
+        $img_resize->save(public_path("img/{$arvore->id}.jpg"));
 
         return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Árvore cadastrada com sucesso!']);
     }
@@ -192,7 +192,7 @@ class ArvoreController extends Controller
             $file = $file[2];
             $img_resize = \Image::make(storage_path("app/fotos/{$file}"));
             $img_resize->fit(200);
-            $img_resize->save(public_path("img/{$foto->id}.jpg"));
+            $img_resize->save(public_path("img/{$arvore->id}.jpg"));
         }
 
         return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with(['success' => 'Árvore atualizada com sucesso!']);

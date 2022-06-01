@@ -2,6 +2,18 @@
 
 $admin = [
     [
+        'text' => 'Lista completa',
+        'url' => 'index-admin',
+        'can' => 'admin',
+    ],
+    [
+        'text' => 'Lista árvores mortas',
+        'url' => 'index-mortas',
+        'can' => 'admin',
+    ],
+];
+$arquivos = [
+    [
         'text' => 'Gerar csv todas árvores',
         'url' => 'gerar-csv-completo',
         'can' => 'admin',
@@ -50,9 +62,8 @@ $menu = [
         'submenu' => $menu_concurso,
     ],
     [
-        'text' => 'Lista completa (ADMINISTRATIVO)',
-        'url' => 'index-admin',
-        'can' => 'admin',
+        'text' => 'Administrativo',
+        'submenu' => $admin,
     ],
     [
         'text' => 'Nova árvore',
@@ -70,8 +81,8 @@ $menu = [
         'can' => 'admin',
     ],
     [
-        'text' => 'Admin',
-        'submenu' => $admin,
+        'text' => 'Arquivos CSV',
+        'submenu' => $arquivos,
         'can' => 'admin',
     ],
     [

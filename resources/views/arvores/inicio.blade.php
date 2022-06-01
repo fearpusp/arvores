@@ -25,7 +25,7 @@
                 <ul>
                     <li><a href="{{ route('arvores.index') }}"><i>Listagem completa</a></i> exibe todas as árvores catalogadas. A partir dessa lista é possível acessar a página de cada árvore</li>
                     <li><i><a href="{{ route('arvores.mapa') }}">Mapa com todas as árvores</a></i> exibe um mapa do google com as marcações de localização das árvores</li>
-                    <li><a href="https://www.youtube.com/watch?v=Uijy5kW8G40"><i>Vídeo tutorial no <b>YouTube</b></i></li>
+                    <li><a href="https://www.youtube.com/watch?v=Uijy5kW8G40"><i>Vídeo tutorial no <b>YouTube</b></i></a></li>
                 </ul>
               </div>
             </div>

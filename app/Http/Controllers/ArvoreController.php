@@ -29,7 +29,8 @@ class ArvoreController extends Controller
             $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
                 ->with('especie')
                 ->join('especies', 'especies.id', '=', 'arvores.especie_id')
-                ->where('especies.nome_popular', 'ilike', "%{$search}%")
+                ->where('flag_morta', false)
+                ->orWhere('especies.nome_popular', 'ilike', "%{$search}%")
                 ->orWhere('especies.nome_cientifico', 'ilike', "%{$search}%")
                 ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
@@ -38,6 +39,7 @@ class ArvoreController extends Controller
         } else {
             $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
                 ->with('especie')
+                ->where('flag_morta', false)
                 ->join('especies', 'especies.id', '=', 'arvores.especie_id')
                 ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
                 ->paginate(50);
@@ -46,17 +48,34 @@ class ArvoreController extends Controller
         return view('arvores.index', compact('arvores'));
     }
 
+    public function mortas()
+    {
+        \UspTheme::activeUrl('index-mortas');
+
+        $titulo = 'Árvores mortas';
+        $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
+            ->with('especie')
+            ->where('flag_morta', true)
+            ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
+            ->paginate(50);
+
+        return view('arvores.index-admin', compact('arvores', 'titulo'));
+    }
+
     public function indexAdmin()
     {
         \UspTheme::activeUrl('index-admin');
 
+        $titulo = 'TODAS (exceto mortas)';
         $arvores = Arvore::query()->select('arvores.id', 'especie_id', 'latitude', 'longitude', 'porte', 'codigo_unico')
             ->with('especie')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->where('flag_morta', false)
             ->orderByRaw('especies.nome_popular COLLATE "pt_BR"')
             ->get();
 
-        return view('arvores.index-admin', compact('arvores'));
+        return view('arvores.index-admin', compact('arvores', 'titulo'));
     }
 
     public function create()
@@ -170,6 +189,12 @@ class ArvoreController extends Controller
         } else {
             $arvore->flag_concurso = false;
         }
+
+        if (isset($request->flag_morta) && ($request->flag_morta == true)) {
+            $arvore->flag_morta = true;
+        } else {
+            $arvore->flag_morta = false;
+        }
         $arvore->save();
 
         // Caso já tenha foto cadastrada e seja enviada nova, apaga a anterior
@@ -258,6 +283,7 @@ class ArvoreController extends Controller
     {
         $arvores = Arvore::select('especies.nome_popular', 'especies.nome_cientifico', 'latitude', 'longitude', 'codigo_unico')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
+            ->where('flag_morta', false)
             ->get();
 
         $arquivo = "arvores_" . date('Y-m-d') . ".csv";
@@ -299,6 +325,7 @@ class ArvoreController extends Controller
         $arvores = Arvore::select('especies.nome_popular', 'especies.nome_cientifico', 'latitude', 'longitude', 'codigo_unico')
             ->join('especies', 'especies.id', '=', 'arvores.especie_id')
             ->where('flag_concurso', true)
+            ->where('flag_morta', false)
             ->get();
 
         $arquivo = "arvores_concurso_" . date('Y-m-d') . ".csv";

@@ -95,6 +95,13 @@
                     @else
                     <input type="checkbox" name="flag_concurso">
                     @endif
+                    <br>
+                    <label for="flag_morta" class="control-label">Flag árvore MORTA</label>
+                    @if ($arvore->flag_morta == true)
+                    <input type="checkbox" name="flag_morta" checked>
+                    @else
+                    <input type="checkbox" name="flag_morta">
+                    @endif
                 </div>
             </div>
             <br>

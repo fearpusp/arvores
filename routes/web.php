@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArvoreController::class, 'inicio'])->name('arvores.inicio');
 Route::get('/index', [ArvoreController::class, 'index'])->name('arvores.index');
+Route::get('/index-mortas', [ArvoreController::class, 'mortas'])->name('arvores.mortas');
 Route::get('/index-admin', [ArvoreController::class, 'indexAdmin'])->name('arvores.index-admin');
 Route::get('/create', [ArvoreController::class, 'create'])->name('arvores.create')->middleware('can:admin');
 Route::post('/arvores', [ArvoreController::class, 'store'])->name('arvores.store')->middleware('can:admin');

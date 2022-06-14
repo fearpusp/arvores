@@ -49,7 +49,7 @@ class ComentarioController extends Controller
         }
 
         $arvore = Arvore::find($request->arvore_id);
-        return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico]);
+        return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with('success', 'Seu comentário foi enviado com sucesso!');
     }
 
     public function edit(Arvore $arvore)

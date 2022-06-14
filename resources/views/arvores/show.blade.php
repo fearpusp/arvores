@@ -40,22 +40,24 @@
             font-size: 25px;
 
     </style>
-    @if (session()->has('success'))
-    <div class="alert alert-success" id="div-sucesso">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        {{ session()->get('success') }}
-    </div>
-    @endif
+    <div class="row justify-content-md-center">
+        @if (session()->has('success'))
+            <div class="alert alert-success text-center col-sm-6" id="div-sucesso">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>{{ session()->get('success') }}</b>
+            </div>
+        @endif
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     </div>
-    @endif
 
     <h4 class="text-center">{{ $arvore->especie->nome_popular }}
         @can('admin')

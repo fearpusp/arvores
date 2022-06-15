@@ -30,6 +30,7 @@ class ComentarioEnviado extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.comentario_enviado');
+        return $this->markdown('emails.comentario_enviado')
+            ->subject('Novo Comentário');
     }
 }

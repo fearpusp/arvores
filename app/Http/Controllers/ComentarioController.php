@@ -49,6 +49,9 @@ class ComentarioController extends Controller
         }
 
         $arvore = Arvore::find($request->arvore_id);
+
+        $email_comentario = new ComentarioEnviadoController();
+        $email_comentario->store($comentario);
         return redirect()->route('arvores.show', ['arvore' => $arvore->codigo_unico])->with('success', 'Seu comentário foi enviado com sucesso!');
     }
 

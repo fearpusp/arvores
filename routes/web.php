@@ -8,6 +8,7 @@ use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
 use App\Http\Controllers\PlacaController;
+use App\Models\Comentario;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,3 +72,8 @@ Route::get('mapa_concurso', function () {
 
 Route::get('gerar-csv-completo', [ArvoreController::class, 'gerarCsvCompleto'])->name('gerar-csv-completo')->middleware('can:admin');
 Route::get('gerar-csv-concurso', [ArvoreController::class, 'gerarCsvConcurso'])->name('gerar-csv-concurso')->middleware('can:admin');
+
+Route::get('mailable', function () {
+    $comentario = Comentario::all();
+    return (new App\Mail\ComentarioEnviado($comentario->last()))->render();
+})->middleware('can:admin');

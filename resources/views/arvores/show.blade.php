@@ -143,10 +143,10 @@
                         @endauth
                     </h5>
                 </div>
-                    @foreach ($comentarios as $comentario)
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
+                @foreach ($comentarios as $comentario)
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
                                 @if (count($comentario->fotos) > 0)
                                     <div class="row">
                                         <div class="col-sm-2" style="padding-right: 0px;">
@@ -179,14 +179,24 @@
                                         <p class="card-text">{{ $comentario->comentario }}</p>
                                       </div>
                                     </div>
+                                </div>
                                 @endif
                             </div>
-                        </div>
                     @endforeach
                 </div>
             </div>
         </div>
-        <div class="container text-center">
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="container justify-content-md-center text-center">
             <br>
             <a href="{{ route('arvores.index') }}" class="btn btn-info">Todas as árvores</a>
         </div>

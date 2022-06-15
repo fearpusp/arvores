@@ -11,7 +11,7 @@ class ComentarioEnviadoController extends Controller
 
     public function store(Comentario $comentario)
     {
-        foreach (env('COMENTARIO_MODERADORES') as $destinario) {
+        foreach (explode(',', env('COMENTARIO_MODERADORES')) as $destinario) {
             Mail::to($destinario)
                 ->send(new ComentarioEnviado($comentario));
         }

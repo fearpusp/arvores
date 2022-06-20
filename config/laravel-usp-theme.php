@@ -64,6 +64,7 @@ $menu = [
     [
         'text' => 'Administrativo',
         'submenu' => $admin,
+        'can' => 'admin',
     ],
     [
         'text' => 'Nova árvore',

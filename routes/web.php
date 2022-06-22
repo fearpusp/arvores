@@ -52,6 +52,8 @@ Route::get('/comentarios/create/{arvore}', [ComentarioController::class, 'create
 Route::post('/comentarios/', [ComentarioController::class, 'store'])->name('comentarios.store')->middleware('can:user');
 Route::get('/comentarios/edit/{arvore}', [ComentarioController::class, 'edit'])->name('comentarios.edit')->middleware('can:admin');
 Route::patch('/comentarios/{arvore}', [ComentarioController::class, 'update'])->name('comentarios.update')->middleware('can:admin');
+Route::get('/comentarios/todos', [ComentarioController::class, 'editTodos'])->name('comentarios.editTodos')->middleware('can:admin');
+Route::post('/comentarios/todos', [ComentarioController::class, 'updateTodos'])->name('comentarios.updateTodos')->middleware('can:admin');
 
 Route::get('/mapa', function () {
     \UspTheme::activeUrl('mapa');

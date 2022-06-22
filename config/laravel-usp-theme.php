@@ -11,6 +11,11 @@ $admin = [
         'url' => 'index-mortas',
         'can' => 'admin',
     ],
+    [
+        'text' => 'Moderação de todos comentários',
+        'url' => 'comentarios/todos',
+        'can' => 'admin',
+    ],
 ];
 $arquivos = [
     [

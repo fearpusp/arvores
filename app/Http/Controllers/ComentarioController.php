@@ -105,8 +105,8 @@ class ComentarioController extends Controller
                     /* fazer resie (fit) da foto e salvar na pasta public */
                     $file = explode('/', $comentario_moderado->fotos->first()->path);
                     $file = $file[2];
-                    if (file_exists(storage_path("app/comentarios_fotos/{$file}"))) {
-                        $img_resize = \Image::make(storage_path("app/comentarios_fotos/{$file}"));
+                    if (file_exists(storage_path("app/comentario_fotos/{$file}"))) {
+                        $img_resize = \Image::make(storage_path("app/comentario_fotos/{$file}"));
                         $img_resize->fit(150);
                         $img_resize->save(public_path("img/comentarios/{$comentario_moderado->fotos->first()->id}.jpg"));
                     }

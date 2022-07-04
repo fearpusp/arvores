@@ -5,10 +5,10 @@
             <a href="{{ route('concurso') }}"><img src="{{ asset('banner_concurso_fotos.jpg') }}" class="img-fluid rounded"></a>
         </div>
         <div class="jumbotron" style="padding-top: 22px; padding-bottom: 22px; padding-left: 64px; padding-right: 64px; margin-bottom: 8px;">
-            <p class="mb-2">O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Sr. Antônio Justino, chefe do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus. O sistema tem o objetivo de apresentar à comunidade as árvores da Faculdade bem como acompanhar seu manejo (ocorrência de podas, análise de risco etc.).</p>
-            <p class="mb-2">Grupos de árvores de grande porte receberam placas de identificação e um QR Code específico. O usuário poderá escanear o código com seu celular e será direcionado à página da árvore em questão e visualizar as informações dela.</p>
-            <p class="mb-2">No sistema, o usuário poderá acessar diversas informações das plantas da faculdade e interagir, comentando e compartilhando nas redes sociais <i>Facebook</i>, <i>Twitter</i> e <i>LinkedIn</i>. Entre as informações disponíveis estão os nomes popular e científico, porte, localização, foto e histórico de ocorrências.</p>
-            <p class="mb-2">Além das cerca de 250 árvores catalogadas no momento da criação do sistema, a Faculdade possui outro conjunto arbóreo não contabilizado, localizado em uma área preservada delimitada pelo Bloco B1, Rua Pedreira de Freitas, Bloco C1 e Cantina.</p>
+            <p class="mb-2">O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus.</p>
+            <p class="mb-2">O sistema tem o objetivo de acompanhar o manejo das árvores da faculdade (ocorrência de podas, análise de risco etc.) bem como apresentá-las à comunidade, que poderá acessar diversas informações e interagir, comentando e compartilhando nas redes sociais Facebook, Twitter e LinkedIn.</p>
+            <p class="mb-2">Como parte do projeto, grupos de árvores de grande porte receberam placas de identificação próximo a seu tronco. O QR Code impresso na placa remete à página específica da árvore, que contém informações como: nomes popular e científico, porte, localização, foto, comentários e histórico de ocorrências.</p>
+            <p class="mb-2">Além das cerca de 250 árvores catalogadas no momento da criação do sistema, a Faculdade possui outro conjunto arbóreo não contabilizado, localizado em uma área preservada delimitada por Bloco B1, Rua Pedreira de Freitas, Bloco C1 e Cantina.</p>
         </div>
         <div class="accordion" id="accordionExample">
           <div class="card">

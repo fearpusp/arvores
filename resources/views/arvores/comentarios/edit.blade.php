@@ -59,6 +59,7 @@
                     <thead>
                         <tr>
                             <th class="text-center">Data</th>
+                            <th class="text-center">Horário</th>
                             <th class="text-center">Usuário</th>
                             <th class="text-center">Comentário</th>
                             <th class="text-center">Foto/imagem</th>
@@ -69,6 +70,7 @@
                         @foreach ($comentarios as $comentario)
                             <tr>
                                 <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</td>
+                                <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('H:i:s') }}</td>
                                 <td class="text-center">{{$comentario->user->name}} ({{ $comentario->user->codpes }})</td>
                                 <td class="text-center">{{$comentario->comentario}}</td>
                                 <td class="text-center">
@@ -119,6 +121,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">Data</th>
+                        <th class="text-center">Horário</th>
                         <th class="text-center">Usuário</th>
                         <th class="text-center">Comentário</th>
                         <th class="text-center">Foto/imagem</th>
@@ -133,6 +136,7 @@
                             <tr class="alert-danger">
                         @endif
                             <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</td>
+                                <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('H:i:s') }}</td>
                             <td class="text-center">{{$comentario->user->name}} ({{ $comentario->user->codpes }})</td>
                             <td class="text-left">{{$comentario->comentario}}</td>
                             <td class="text-center">

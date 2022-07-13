@@ -58,6 +58,7 @@
                         <tr>
                             <th class="text-center">Árvore</th>
                             <th class="text-center">Data</th>
+                            <th class="text-center">Horário</th>
                             <th class="text-center">Usuário</th>
                             <th class="text-center">Comentário</th>
                             <th class="text-center">Foto/imagem</th>
@@ -70,6 +71,7 @@
                                 <input type="hidden" value="{{$comentario->arvore->id}}" name="arvore_id">
                                 <td class="text-center"><a target="_blank" href="{{ route('arvores.show', ['arvore' => $comentario->arvore->codigo_unico]) }}">{{$comentario->arvore->codigo_unico}} - {{$comentario->arvore->especie->nome_popular}} <i>({{$comentario->arvore->especie->nome_cientifico}})</i></td>
                                 <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('d/m/Y') }}</td>
+                                <td class="text-center">{{ Carbon\Carbon::parse($comentario->created_at)->format('H:i:s') }}</td>
                                 <td class="text-center">{{$comentario->user->name}} ({{ $comentario->user->codpes }})</td>
                                 <td class="text-center">{{$comentario->comentario}}</td>
                                 <td class="text-center">

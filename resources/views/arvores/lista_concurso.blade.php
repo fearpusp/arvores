@@ -36,6 +36,9 @@
                                     <small>(<i>{{$arvore->especie->nome_cientifico}})</i><br>
                                     Código: {{$arvore->codigo_unico}}
                                     <p class="card-text text-center">Porte: {{ ucfirst($arvore->porte) }}</small></p>
+                                    @if (count($arvore->comentarios) > 0)
+                                        <p class="alert alert-warning">Fotografada</p>
+                                    @endif
                                 </a>
                             </h5>
                             <p class="text-center"><small><a href="https://www.google.com.br/maps/search/{{$arvore->latitude}},{{$arvore->longitude}}" class="btn btn-sm btn-primary"

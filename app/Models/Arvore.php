@@ -46,4 +46,12 @@ class Arvore extends Model
     {
         return $this->hasMany(Comentario::class)->where('moderado', true)->orderBy('id', 'desc');
     }
+
+    public function comentarios_concurso()
+    {
+        return $this->hasMany(Comentario::class)
+            ->where('moderado', true)
+            ->where('publicar', true)
+            ->where('comentario', 'like', 'Concurso%');
+    }
 }

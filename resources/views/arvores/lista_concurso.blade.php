@@ -37,7 +37,7 @@
                                     Código: {{$arvore->codigo_unico}}
                                     <p class="card-text text-center">Porte: {{ ucfirst($arvore->porte) }}</small></p>
                                     @if (count($arvore->comentarios_concurso) > 0)
-                                        <small><span class="alert-warning"><i>Fotografada</i></span></small>
+                                        <small><span class="alert-warning"><i><b>Fotografada</b></i></span></small>
                                     @endif
                                 </a>
                             </h5>

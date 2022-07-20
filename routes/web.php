@@ -66,6 +66,7 @@ Route::get('resize_fotos/', [FotoController::class, 'resize'])->name('fotos.resi
 
 Route::get('concurso/', [ArvoreController::class, 'concurso'])->name('concurso');
 Route::get('lista_concurso/', [ArvoreController::class, 'listaConcurso'])->name('lista_concurso');
+Route::get('participantes_concurso/', [ArvoreController::class, 'participantesConcurso'])->name('participantes_concurso')->middleware('can:admin');
 
 Route::get('mapa_concurso', function () {
     \UspTheme::activeUrl('mapa_concurso');

@@ -47,6 +47,11 @@ $menu_concurso = [
         'text' => 'Edital em PDF',
         'url' => 'edital_concurso_fotografia_2022.pdf',
     ],
+    [
+        'text' => 'Participantes',
+        'url' => 'participantes_concurso',
+        'can' => 'admin',
+    ],
 ];
 
 $menu = [

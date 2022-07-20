@@ -8,6 +8,7 @@ use App\Models\Comentario;
 use App\Models\Especie;
 use App\Models\Foto;
 use App\Models\Ocorrencia;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -362,5 +363,23 @@ class ArvoreController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function participantesConcurso()
+    {
+        \UspTheme::activeUrl('participantes_concurso');
+        $pessoas = array();
+        $arvores_concurso = Arvore::where('flag_concurso', true)->get();
+        foreach ($arvores_concurso as $arvore) {
+            $comentarios_concurso = $arvore->comentarios_concurso;
+            if (count($comentarios_concurso) > 0) {
+                foreach ($comentarios_concurso as $comentario) {
+                    $pessoas[$comentario->user->codpes]['nome'] = $comentario->user->name;
+                    $pessoas[$comentario->user->codpes]['arvores'][$arvore->codigo_unico]['nome_popular'] = $arvore->especie->nome_popular;
+                }
+            }
+        }
+
+        return view('arvores.participantes_concurso', compact('pessoas'));
     }
 }

@@ -71,11 +71,11 @@
               </div>
             </div>
           </div>
-          <!--div class="card">
+          <div class="card">
             <div class="card-header" id="headingFive">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    INFORMAÇÕES PARA DESENVOLVEDORES? <span class="text-right"><i class="fas fa-plus"></i></span>
+                    INFORMAÇÕES PARA DESENVOLVEDORES <span class="text-right"><i class="fas fa-plus"></i></span>
                 </button>
               </h2>
             </div>
@@ -91,6 +91,6 @@
               </div>
             </div>
           </div>
-        </div-->
+        </div>
     </div>
 @endsection

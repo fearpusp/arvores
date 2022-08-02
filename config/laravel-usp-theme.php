@@ -50,7 +50,6 @@ $menu_concurso = [
     [
         'text' => 'Participantes',
         'url' => 'participantes_concurso',
-        'can' => 'admin',
     ],
 ];
 

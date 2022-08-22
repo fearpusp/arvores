@@ -52,6 +52,9 @@ class Arvore extends Model
         return $this->hasMany(Comentario::class)
             ->where('moderado', true)
             ->where('publicar', true)
-            ->where('comentario', 'like', 'Concurso%');
+            ->where(function ($query) {
+                $query->where('comentario', 'like', 'Concurso%')
+                    ->orWhere('comentario', 'like', '%concurso%');
+            });
     }
 }

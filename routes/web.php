@@ -9,7 +9,9 @@ use App\Http\Controllers\FotoController;
 use App\Http\Controllers\OcorrenciaController;
 use App\Http\Controllers\PlacaController;
 use App\Models\Comentario;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +69,13 @@ Route::get('resize_fotos/', [FotoController::class, 'resize'])->name('fotos.resi
 Route::get('concurso/', [ArvoreController::class, 'concurso'])->name('concurso');
 Route::get('lista_concurso/', [ArvoreController::class, 'listaConcurso'])->name('lista_concurso');
 Route::get('participantes_concurso/', [ArvoreController::class, 'participantesConcurso'])->name('participantes_concurso');
+
+// Link para pdf do concurso
+Route::get('concurso/resultado', function () {
+    return Response::make(file_get_contents('concurso_de_fotografia_classificacao.pdf'), 200, [
+        'content-type' => 'application/pdf',
+    ]);
+})->name('resultado');
 
 Route::get('mapa_concurso', function () {
     \UspTheme::activeUrl('mapa_concurso');

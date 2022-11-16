@@ -75,6 +75,11 @@ $menu = [
         'url' => 'index-mortas',
     ],
     [
+        'text' => 'Concurso',
+        'submenu' => $menu_concurso,
+        'can' => 'admin'
+    ],
+    [
         'text' => 'Administrativo',
         'submenu' => $admin,
         'can' => 'admin',

@@ -66,21 +66,21 @@ Route::resource('comentario_foto', ComentarioFotoController::class);
 
 Route::get('resize_fotos/', [FotoController::class, 'resize'])->name('fotos.resize');
 
-Route::get('concurso/', [ArvoreController::class, 'concurso'])->name('concurso');
-Route::get('lista_concurso/', [ArvoreController::class, 'listaConcurso'])->name('lista_concurso');
-Route::get('participantes_concurso/', [ArvoreController::class, 'participantesConcurso'])->name('participantes_concurso');
+Route::get('concurso/', [ArvoreController::class, 'concurso'])->name('concurso')->middleware('can:admin');
+Route::get('lista_concurso/', [ArvoreController::class, 'listaConcurso'])->name('lista_concurso')->middleware('can:admin');
+Route::get('participantes_concurso/', [ArvoreController::class, 'participantesConcurso'])->name('participantes_concurso')->middleware('can:admin');
 
 // Link para pdf do concurso
 Route::get('concurso/resultado', function () {
     return Response::make(file_get_contents('concurso_de_fotografia_classificacao.pdf'), 200, [
         'content-type' => 'application/pdf',
     ]);
-})->name('resultado');
+})->name('resultado')->middleware('can:admin');
 
 Route::get('mapa_concurso', function () {
     \UspTheme::activeUrl('mapa_concurso');
     return view('arvores.mapa-concurso');
-})->name('arvores.mapa_concurso');
+})->name('arvores.mapa_concurso')->middleware('can:admin');
 
 Route::get('gerar-csv-completo', [ArvoreController::class, 'gerarCsvCompleto'])->name('gerar-csv-completo')->middleware('can:admin');
 Route::get('gerar-csv-concurso', [ArvoreController::class, 'gerarCsvConcurso'])->name('gerar-csv-concurso')->middleware('can:admin');

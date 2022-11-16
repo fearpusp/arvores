@@ -71,8 +71,8 @@ $menu = [
         'url' => 'mapa',
     ],
     [
-        'text' => 'Concurso',
-        'submenu' => $menu_concurso,
+        'text' => 'Lista árvores mortas',
+        'url' => 'index-mortas',
     ],
     [
         'text' => 'Administrativo',

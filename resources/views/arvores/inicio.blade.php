@@ -5,10 +5,10 @@
             <a href="{{ route('arvores.index') }}"><img src="{{ asset('banner_arvores_1100px.jpg') }}" class="img-fluid rounded"></a>
         </div>
         <div class="jumbotron" style="padding-top: 22px; padding-bottom: 22px; padding-left: 64px; padding-right: 64px; margin-bottom: 8px;">
-            <p class="mb-2">O site Árvores da FEA-RP é um sistema on-line criado em 2022, em trabalho conjunto das áreas administrativa, comunicação e de informática da FEA-RP, com apoio do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus.</p>
-            <p class="mb-2">O sistema tem o objetivo de acompanhar o manejo das árvores da faculdade (ocorrência de podas, análise de risco etc.) bem como apresentá-las à comunidade, que poderá acessar diversas informações e interagir, comentando e compartilhando nas redes sociais Facebook, Twitter e LinkedIn.</p>
-            <p class="mb-2">Como parte do projeto, grupos de árvores de grande porte receberam placas de identificação próximo a seu tronco. O QR Code impresso na placa remete à página específica da árvore, que contém informações como: nomes popular e científico, porte, localização, foto, comentários e histórico de ocorrências.</p>
-            <p class="mb-2">Além das cerca de 250 árvores catalogadas no momento da criação do sistema, a Faculdade possui outro conjunto arbóreo não contabilizado, localizado em uma área preservada delimitada por Bloco B1, Rua Pedreira de Freitas, Bloco C1 e Cantina.</p>
+            <p class="mb-2">O sistema on-line Árvores da FEA-RP é um catálogo estruturado com o objetivo de manter o histórico de manejo de cada árvore da faculdade.</p>
+            <p class="mb-2">No sistema, cada indivíduo possui página própria, com foto real, nomes popular e científico, porte, geolocalização e histórico de manejo (análise de risco, execução de poda, indicação de extração etc.). Há também meios de interação da comunidade: links para compartilhamento direto nas redes sociais Facebook, Twitter e LinkedIn e campo para que pessoas vinculadas à Universidade de São Paulo possam fazer comentários.</p>
+            <p class="mb-2">Como parte do projeto, foram instaladas placas de identificação próximas ao tronco de árvores de grande porte, por meio das quais é possível acessar a página do espécime via QR code.</p>
+            <p class="mb-2">Lançado em abril de 2022, o sistema foi projetado pelas áreas administrativa, de informática e de comunicação da FEA-RP, com apoio do Serviço de Áreas Verdes e Meio Ambiente da Prefeitura do Campus.</p>
         </div>
         <div class="accordion" id="accordionExample">
           <div class="card">
